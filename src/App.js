@@ -1,23 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
+import xclogo from './xclogo.jpg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={xclogo} className="App-logo" alt="xclogo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          An app <code>for High School</code> Cross Country Coaches.
         </p>
-        <a
+        {/* <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
       </header>
     </div>
   );
