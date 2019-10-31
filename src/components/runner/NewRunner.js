@@ -61,9 +61,9 @@ return (
 
 
         <form className="form--login" onSubmit={addToRunners}>
-          <div className="card">
-            <div className="card-body">
-          <h1 className="card-title h3 mb-3 font-weight-normal">New Runner Form</h1>
+          <div >
+            <div >
+          <h1 >New Runner Form</h1>
           <fieldset>
             <label className="card-text" htmlFor="first_name"> First Name </label>
             <input
