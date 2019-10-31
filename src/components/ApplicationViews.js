@@ -42,4 +42,4 @@ const ApplicationViews = () => {
     )
 }
 
-export default ApplicationViews
+export default withRouter(ApplicationViews)
