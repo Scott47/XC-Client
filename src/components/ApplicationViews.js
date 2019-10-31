@@ -4,6 +4,7 @@ import { withRouter, Redirect } from "react-router-dom"
 import useSimpleAuth from "../ui/useSimpleAuth"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
+import Runner from "./runner/Runner"
 
 
 
@@ -26,6 +27,14 @@ const ApplicationViews = () => {
             <Route
                 path="/login" render={props => {
                     return <Login {...props} />
+                }}
+            />
+            <Route
+                exact path="/runners" render={props => {
+                    if(isAuthenticated()) return (
+                       <Runner {...props}  />
+                    )
+                    else return <Redirect to="/login" />
                 }}
             />
         </React.Fragment>
