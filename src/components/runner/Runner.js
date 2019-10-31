@@ -45,7 +45,7 @@ const Runner = props => {
           })
         ) : (
             <p>
-            Add a runner to roster: <a href="/runners/new"> here</a>.
+            You have no current runners
           </p>
 
         )}
