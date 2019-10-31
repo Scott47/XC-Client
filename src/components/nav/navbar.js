@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
-import useSimpleAuth from "../../hooks/ui/useSimpleAuth"
+import useSimpleAuth from "../../ui/useSimpleAuth"
 
 const NavBar = props => {
     const { isAuthenticated, logout } = useSimpleAuth()
@@ -24,9 +24,6 @@ const NavBar = props => {
                     <li className="nav-item">
                     <Link className="nav-link" to="/reports">Reports</Link>
                     </li>
-                    <li className="nav-item">
-                    <Link className="nav-link" to="/myaccount">Login</Link>
-                        </li>
                         <li className="nav-item">
                             <button className="nav-link fakeLink logout-link"
                                 onClick={() => {

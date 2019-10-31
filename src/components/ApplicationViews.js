@@ -1,14 +1,14 @@
 import { Route } from "react-router-dom"
 import React, { useState, useEffect } from "react"
 import { withRouter, Redirect } from "react-router-dom"
-// import useSimpleAuth from "../hooks/ui/useSimpleAuth"
+import useSimpleAuth from "../ui/useSimpleAuth"
 import Register from "./auth/Register"
 import Login from "./auth/Login"
 
 
 
 const ApplicationViews = () => {
-    // const { isAuthenticated } = useSimpleAuth()
+    const { isAuthenticated } = useSimpleAuth()
 
     return (
         <React.Fragment>
@@ -23,7 +23,6 @@ const ApplicationViews = () => {
                     return <Register {...props} />
                 }}
             />
-
             <Route
                 path="/login" render={props => {
                     return <Login {...props} />
