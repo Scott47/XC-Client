@@ -22,7 +22,7 @@ const OneRunner = props => {
               <div className="card-body">
                 <section className="runner">
                     <Link className="nav-link" to={`/runners/${props.runner.id}`}>
-                        <h5>{props.runner.first_name}</h5>
+                        <p>{props.runner.first_name} {props.runner.last_name}, {props.runner.grade}</p>
                     </Link>
                 </section>
                 </div>
