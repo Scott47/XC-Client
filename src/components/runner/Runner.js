@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import OneRunner from "./OneRunner"
 import useSimpleAuth from "../../ui/useSimpleAuth"
+import { is } from "@babel/types"
 
 //Author: Scott Silver
 //Purpose: Display Runners associated with coach/user
@@ -12,17 +13,19 @@ const Runner = props => {
 
 
     const getMyRunners = () => {
-              fetch(`http://localhost:8000/runners?coach=true`, {
+        if (isAuthenticated()) {
+              fetch(`http://localhost:8000/runners`, {
                   "method": "GET",
                   "headers": {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
-                    "Authorization": `Token ${localStorage.getItem("auth_token")}`
+                    "Authorization": `Token ${localStorage.getItem("token")}`
                   }
               })
               .then(response => response.json())
               .then(setMyRunners)
       }
+    }
     useEffect(getMyRunners, [])
     return(
         <>
