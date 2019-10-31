@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={xclogo} className="App-logo" alt="xclogo" />
         <p>
-          An app <code>for High School</code> Cross Country Coaches.
+          Building capacity and speed with information.
         </p>
         {/* <a
           className="App-link"
