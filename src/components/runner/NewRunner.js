@@ -5,7 +5,7 @@ import React, { useRef, useEffect, useState } from "react";
 // Methods - GET, POST
 
 
-const NewRunnerForm = props => {
+const NewRunner = props => {
   const grade = useRef();
   const first_name = useRef();
   const last_name = useRef();
@@ -27,7 +27,7 @@ const NewRunnerForm = props => {
       last_name: last_name.current.value,
       grade: grade.current.value,
       phone: phone.current.value,
-      email: product_type.current.value,
+      email: email.current.value,
       address: address.current.value,
       parent: parent.current.value,
       team: team.current.value,
@@ -101,17 +101,6 @@ return (
             />
           </fieldset>
           <fieldset>
-            <label className="card-text" htmlFor="quantity"> Quantity </label>
-            <input
-              ref={quantity}
-              type="number"
-              name="quantity"
-              className="form-control"
-              placeholder="Quantity Available"
-              required
-            />
-          </fieldset>
-          <fieldset>
             <label className="card-text" htmlFor="phone"> Phone Number </label>
             <input
               ref={phone}
@@ -119,6 +108,17 @@ return (
               name="phone"
               className="form-control"
               placeholder="Phone Number"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label className="card-text" htmlFor="email"> Email </label>
+            <input
+              ref={email}
+              type="text"
+              name="email"
+              className="form-control"
+              placeholder="Email"
               required
             />
           </fieldset>
@@ -141,6 +141,17 @@ return (
               name="parent"
               className="form-control"
               placeholder="Parent"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label className="card-text" htmlFor="team"> Team </label>
+            <input
+              ref={team}
+              type="number"
+              name="team"
+              className="form-control"
+              placeholder="Team"
               required
             />
           </fieldset>

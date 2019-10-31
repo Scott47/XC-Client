@@ -28,7 +28,7 @@ const RunnerList = props => {
   return (
     <>
     <div>
-            Add a runner to roster: <a href="/runners/new"> here</a>.
+            Add a runner to roster: <a href="/addrunner"> here</a>.
           </div>
       <div className="myRunners-Div">
         {myRunners.length > 0 ? (
