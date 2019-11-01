@@ -7,7 +7,8 @@ const RunnerDetails = props => {
   const { isAuthenticated } = useSimpleAuth()
 
   const getSingleRunner = (id) => {
-    return fetch(`https://localhost:8000/runners/${id}`, {
+      console.log(props.match.params.runnerId)
+    return fetch(`http://localhost:8000/runners/${id}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -30,27 +31,32 @@ const RunnerDetails = props => {
   };
 
   useEffect(() => {
-  }, []);
+      getSingleRunner(props.match.params.runnerId)}, []
+      );
+
 
   return (
     <>
-      {
+      {singleRunner.first_name !== null ? (
         <section className="runner-details">
-            console.log(props.runner)
+            {/* {console.log(props.runner)} */}
           <h3>
-            {props.runner.first_name} {props.runner.last_name}
+            {singleRunner.first_name} {singleRunner.last_name}
           </h3>
-          <p>{props.runner.grade}</p>
-          <p>{props.runner.phone}</p>
-          <p>{props.runner.email}</p>
-          <p>{props.runner.address}</p>
-          <p>{props.runner.parent}</p>
+          <p><strong>Grade:</strong> {singleRunner.grade}</p>
+          <p><strong>Phone:</strong> {singleRunner.phone}</p>
+          <p><strong>Email:</strong> {singleRunner.email}</p>
+          <p><strong>Address:</strong> {singleRunner.address}</p>
+          <p><strong>Parent:</strong> {singleRunner.parent}</p>
           <Link>
-            <p>{props.runner.team}</p>
+            <p><strong>Team:</strong> {singleRunner.team}</p>
           </Link>
           <br />
           <button onClick={deleteRunner}>Remove Runner from Roster</button>
         </section>
+      ):(
+          <div></div>
+      )
       }
     </>
   );
