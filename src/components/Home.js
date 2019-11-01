@@ -1,6 +1,6 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import NavBar from "./nav/Navbar"
+import NavBar from "./nav/NavBar"
 import xclogo from './xclogo.jpg';
 import ApplicationViews from "./ApplicationViews"
 import "./Home.css"
