@@ -40,9 +40,9 @@ const RunnerDetails = props => {
       {singleRunner.first_name !== null ? (
         <section className="runner-details">
             {/* {console.log(props.runner)} */}
-          <h3>
+          <h2>
             {singleRunner.first_name} {singleRunner.last_name}
-          </h3>
+          </h2>
           <p><strong>Grade:</strong> {singleRunner.grade}</p>
           <p><strong>Phone:</strong> {singleRunner.phone}</p>
           <p><strong>Email:</strong> {singleRunner.email}</p>

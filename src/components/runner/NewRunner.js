@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef} from "react";
 
 // Author - Scott Silver
 // Purpose - Coach can add runner to roster
@@ -14,8 +14,6 @@ const NewRunner = props => {
   const address = useRef();
   const parent = useRef();
   const team = useRef();
-
-  const [newRunner, setNewRunner] = useState([]);
 
   // function that adds a runner to the runners list on the runners page
   // this function is being called when you click the add to runner button
@@ -53,13 +51,9 @@ const createRunner = newRunner => {
   }).then(res => res.json());
 };
 
-
-
 return (
     <>
 {
-
-
         <form className="form--login" onSubmit={addToRunners}>
           <div >
             <div >
@@ -159,7 +153,6 @@ return (
           <button onClick={e => addToRunners(e)}>Add Runner</button>
           </div>
           </form>
-
 }
 </>
 )
