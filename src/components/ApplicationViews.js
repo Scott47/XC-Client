@@ -1,22 +1,36 @@
 import { Route } from "react-router-dom";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import useSimpleAuth from "../ui/useSimpleAuth";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Runner from "./runner/RunnerList";
 import NewRunner from "./runner/NewRunner"
+import RunnerDetails from "./runner/RunnerDetail"
+
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
+  const [runners, setRunners] = useState([])
+
+  useEffect(() => {
+
+        fetch(`http://localhost:8000/runners`, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Token ${localStorage.getItem("token")}`
+          }
+        })
+          .then(response => response.json())
+          .then(setRunners);
+
+  },[])
+
 
   return (
     <React.Fragment>
-      {/* <Route
-                exact path="/" render={props => {
-                    return <HomePage {...props} />
-                }}
-            /> */}
       <Route
         path="/register"
         render={props => {
@@ -42,6 +56,15 @@ const ApplicationViews = () => {
         path="/addrunner"
         render={props => {
           return <NewRunner {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/runners/:runnerId(\d+)"
+        render={props => {
+            let runner = runners.find(runner => runner.id === +props.match.params.runnerId)
+            console.log(props.match.params.runnerId)
+          return <RunnerDetails runner={runner} {...props} />;
         }}
       />
     </React.Fragment>

@@ -5,17 +5,7 @@ import { Link } from "react-router-dom";
 const Runner = props => {
   // const { isAuthenticated } = useSimpleAuth()
 
-  // const deleteRunner = () => {
-  //   if(isAuthenticated()){
-  //       fetch(`http://localhost:8000/runners/${props.runner.id}`,{
-  //           "method": "DELETE",
-  //           "headers": {
-  //               "Authorization": `Token ${localStorage.getItem("token")}`
-  //           }
-  //       })
-  //       .then(props.getMyRunners)
-  //   }
-  // }
+
   return (
     <>
       <div
