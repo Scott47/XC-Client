@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import useSimpleAuth from "../../ui/useSimpleAuth"
 
 const RunnerDetails = props => {
-  const [singleRunner, setRunner] = useState([]);
+  const [singleRunner, setRunner] = useState({team:{}});
   const { isAuthenticated } = useSimpleAuth()
 
   const getSingleRunner = (id) => {
-      console.log(props.match.params.runnerId)
     return fetch(`http://localhost:8000/runners/${id}`, {
       method: "GET",
       headers: {
@@ -34,22 +33,21 @@ const RunnerDetails = props => {
       getSingleRunner(props.match.params.runnerId)}, []
       );
 
-
+console.log(singleRunner)
   return (
     <>
       {singleRunner.first_name !== null ? (
         <section className="runner-details">
-            {/* {console.log(props.runner)} */}
-          <h2>
+          <h1>
             {singleRunner.first_name} {singleRunner.last_name}
-          </h2>
+          </h1>
           <p><strong>Grade:</strong> {singleRunner.grade}</p>
           <p><strong>Phone:</strong> {singleRunner.phone}</p>
           <p><strong>Email:</strong> {singleRunner.email}</p>
           <p><strong>Address:</strong> {singleRunner.address}</p>
           <p><strong>Parent:</strong> {singleRunner.parent}</p>
           <Link>
-            <p><strong>Team:</strong> {singleRunner.team}</p>
+            <p><strong>Team:</strong> {singleRunner.team.team_name}</p>
           </Link>
           <br />
           <button onClick={deleteRunner}>Remove Runner from Roster</button>

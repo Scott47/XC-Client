@@ -14,7 +14,7 @@ const ApplicationViews = () => {
   const [runners, setRunners] = useState([])
 
   useEffect(() => {
-    if (isAuthenticated()) {
+
         fetch(`http://localhost:8000/runners`, {
           method: "GET",
           headers: {
@@ -25,17 +25,12 @@ const ApplicationViews = () => {
         })
           .then(response => response.json())
           .then(setRunners);
-      }
+
   },[])
 
 
   return (
     <React.Fragment>
-      {/* <Route
-                exact path="/" render={props => {
-                    return <HomePage {...props} />
-                }}
-            /> */}
       <Route
         path="/register"
         render={props => {
@@ -67,7 +62,7 @@ const ApplicationViews = () => {
         exact
         path="/runners/:runnerId(\d+)"
         render={props => {
-            let runner = runners.find(runner => runner.id == +props.match.params.runnerId)
+            let runner = runners.find(runner => runner.id === +props.match.params.runnerId)
             console.log(props.match.params.runnerId)
           return <RunnerDetails runner={runner} {...props} />;
         }}
