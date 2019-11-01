@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import useSimpleAuth from "../../ui/useSimpleAuth"
 
 const RunnerDetails = props => {
-  const [singleRunner, setRunner] = useState({team:{}});
+  const [singleRunner, setRunner] = useState({team:{}, runnermeet:[{meet:{}}]});
+
   const { isAuthenticated } = useSimpleAuth()
 
   const getSingleRunner = (id) => {
@@ -32,7 +33,6 @@ const RunnerDetails = props => {
   useEffect(() => {
       getSingleRunner(props.match.params.runnerId)}, []
       );
-
 console.log(singleRunner)
   return (
     <>
@@ -48,6 +48,9 @@ console.log(singleRunner)
           <p><strong>Parent:</strong> {singleRunner.parent}</p>
           <Link>
             <p><strong>Team:</strong> {singleRunner.team.team_name}</p>
+          </Link>
+          <Link>
+            <p><strong>Meets:</strong> {singleRunner.runnermeet[0].meet.name}</p>
           </Link>
           <br />
           <button onClick={deleteRunner}>Remove Runner from Roster</button>

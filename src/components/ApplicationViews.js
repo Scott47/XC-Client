@@ -63,7 +63,6 @@ const ApplicationViews = () => {
         path="/runners/:runnerId(\d+)"
         render={props => {
             let runner = runners.find(runner => runner.id === +props.match.params.runnerId)
-            console.log(props.match.params.runnerId)
           return <RunnerDetails runner={runner} {...props} />;
         }}
       />
