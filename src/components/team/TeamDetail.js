@@ -12,22 +12,22 @@ const TeamDetail = props => {
   const [runnerList, setRunnerList] = useState([]);
   const { isAuthenticated } = useSimpleAuth();
 
-  const getRoster = id => {
-    if (isAuthenticated()) {
-      fetch(`http://localhost:8000/teams/${id}/?includerunners=true`, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: `Token ${localStorage.getItem("token")}`
-        }
-      })
-        .then(response => response.json())
-        .then(response => {
-            setRoster(response);
-    })
-  };
-}
+//   const getRoster = id => {
+//     if (isAuthenticated()) {
+//       fetch(`http://localhost:8000/teams/${id}`, {
+//         method: "GET",
+//         headers: {
+//           Accept: "application/json",
+//           "Content-Type": "application/json",
+//           Authorization: `Token ${localStorage.getItem("token")}`
+//         }
+//       })
+//         .then(response => response.json())
+//         .then(response => {
+//             setRoster(response);
+//     })
+//   };
+// }
 
   const getRunners = () => {
     if (isAuthenticated()) {
@@ -47,23 +47,38 @@ const TeamDetail = props => {
 }
 
   useEffect(() => {
-    getRoster()
     getRunners()
+    // getRoster()
 }, [])
 
-console.log(runnerList)
+
+  console.log(runnerList);
   return (
-    <>{runnerList.length > 0
+    <>
+    {/* {runnerList.team.id === roster
         ? runnerList.runnerteam.map(runnerteam => {
             return (
               <>
                 <Link>
-                  <p>{runnerteam}</p>
+                  <p></p>
                 </Link>
               </>
             );
           })
-        : ""}
+        : ""} */}
+
+{
+                    runnerList.filter(runner => {
+                        return runner.team !== null})
+                    .map(runner => {
+                        return (
+                            <div key={runner.id}
+                                runner={runner}>
+                                    <a href={`/runners/${runner.id}`}><h5>{runner.first_name}</h5></a>
+                            </div>
+                        )
+                    })
+                }
 
       <h1></h1>
       <p>
