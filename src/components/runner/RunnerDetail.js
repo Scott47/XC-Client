@@ -30,7 +30,8 @@ const RunnerDetails = props => {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`
         }
-      }).then(props.getMyRunners);
+      }).then(props.getMyRunners)
+      .then(props.history.push('/runners'))
     }
   };
 
@@ -79,13 +80,11 @@ const RunnerDetails = props => {
                 );
               })
             : ""}
-          {/* <Link>
-            <p>
-              <strong>Meets:</strong> {singleRunner.runnermeet[0].meet.name}
-            </p>
-          </Link> */}
           <br />
-          <button onClick={deleteRunner}>Remove Runner from Roster</button>
+          <button>Edit Runner</button>
+          <br></br>
+          <br></br>
+          <button onClick={deleteRunner}>Remove Runner</button>
         </section>
       ) : (
         <div></div>

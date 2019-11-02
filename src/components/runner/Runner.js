@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import useSimpleAuth from "../../ui/useSimpleAuth"
 
 const Runner = props => {
-  // const { isAuthenticated } = useSimpleAuth()
-
 
   return (
     <>
