@@ -28,16 +28,13 @@ const TeamList = props => {
   console.log(MyTeams)
   return (
     <>
-    <div>
-            Teams
-          </div>
       <div className="MyTeams-Div">
         {MyTeams.length > 0 ? (
           MyTeams.map(team => {
             return (
               <Team
                 key={team.id}
-                team={team.team_name}
+                team={team}
                 getMyTeams={getMyTeams}
               />
             );

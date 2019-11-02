@@ -6,10 +6,10 @@ const Team = props => {
   return (
     <>
       <div
-        className={`card team-${props.team.id}`}
+        className={`team-${props.team.id}`}
         style={({ height: "2rem" }, { width: "12rem" })}
       >
-          <div className="card-body">
+          <div>
         <section className="team">
           <Link className="nav-link" to={`/teams/${props.team.id}`}>
             <p>
