@@ -8,6 +8,7 @@ import Runner from "./runner/RunnerList";
 import NewRunner from "./runner/NewRunner";
 import RunnerDetails from "./runner/RunnerDetail";
 import TeamList from "./team/TeamList";
+import TeamDetail from "./team/TeamDetail"
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -65,6 +66,14 @@ const ApplicationViews = () => {
         path="/teams"
         render={props => {
           if (isAuthenticated()) return <TeamList {...props} />;
+          else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/teams/:teamId(\d+)"
+        render={props => {
+          if (isAuthenticated()) return <TeamDetail {...props} />;
           else return <Redirect to="/login" />;
         }}
       />
