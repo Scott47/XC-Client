@@ -33,7 +33,7 @@ const NewRunner = props => {
     };
     createRunner(newRunner).then(() => {
       props.history.push({
-        pathname: "/"
+        pathname: "/runners"
       });
     });
   };
