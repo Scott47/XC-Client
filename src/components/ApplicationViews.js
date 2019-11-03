@@ -7,8 +7,9 @@ import Login from "./auth/Login";
 import Runner from "./runner/RunnerList";
 import NewRunner from "./runner/NewRunner";
 import RunnerDetails from "./runner/RunnerDetail";
+import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
-import TeamDetail from "./team/TeamDetail"
+import TeamDetail from "./team/TeamDetail";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
@@ -92,6 +93,16 @@ const ApplicationViews = () => {
             runner => runner.id === +props.match.params.runnerId
           );
           return <RunnerDetails runner={runner} {...props} />;
+        }}
+      />
+      <Route
+        path="/editrunner/:runnerId(\d+)"
+        render={props => {
+          return (
+            <>
+              <EditRunner {...props} />
+            </>
+          );
         }}
       />
     </React.Fragment>

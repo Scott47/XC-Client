@@ -30,22 +30,40 @@ const RunnerDetails = props => {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`
         }
-      }).then(props.getMyRunners)
-      .then(props.history.push('/runners'))
+      })
+        .then(props.getMyRunners)
+        .then(props.history.push("/runners"));
     }
   };
+
+  const editInfo = (grade, phone, email, team, id) => {
+    fetch(`http://localhost:8000/runners/${id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        grade: grade,
+        phone: phone,
+        email: email,
+        team: team
+      })
+    }).then(getSingleRunner)
+};
 
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
   }, []);
-  console.log(singleRunner);
+
   return (
     <>
       {singleRunner.first_name !== null ? (
         <section className="runner-details">
-          <h1>
+          <h3>
             {singleRunner.first_name} {singleRunner.last_name}
-          </h1>
+          </h3>
           <p>
             <strong>Grade:</strong> {singleRunner.grade}
           </p>
@@ -64,11 +82,17 @@ const RunnerDetails = props => {
           <Link>
             <p>
               <strong>Team:</strong> {singleRunner.team.team_name}
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+              <button onClick={() => {
+                    props.history.push(`/editrunner/${singleRunner.id}`);
+                  }} className="edit-button">
+                <a href={`/editrunner/${singleRunner.id}`}>Edit Info</a>
+              </button>
             </p>
-            </Link>
-            <p>
-              <strong>Meets:</strong>
-            </p>
+          </Link>
+          <p>
+            <strong>Meets:</strong>
+          </p>
           {singleRunner.runnermeet.length > 0
             ? singleRunner.runnermeet.map(runnermeet => {
                 return (
@@ -81,7 +105,6 @@ const RunnerDetails = props => {
               })
             : ""}
           <br />
-          <button>Edit Runner</button>
           <br></br>
           <br></br>
           <button onClick={deleteRunner}>Remove Runner</button>
