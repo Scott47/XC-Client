@@ -19,7 +19,7 @@ const NavBar = props => {
                     <Link className="nav-link" to="/teams">Teams</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/teams">Meets</Link>
+                    <Link className="nav-link" to="/meets">Meets</Link>
                 </li>
                 {
                     isAuthenticated() ?

@@ -2,13 +2,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom"
-import Home from './components/Home'
+import ApplicationViews from './components/ApplicationViews'
 import './index.css';
 
 
 ReactDOM.render(
     <Router>
-        <Home />
+        <ApplicationViews />
     </Router>
     , document.getElementById('root'))
 

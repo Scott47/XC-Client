@@ -36,22 +36,6 @@ const RunnerDetails = props => {
     }
   };
 
-  const editInfo = (grade, phone, email, team, id) => {
-    fetch(`http://localhost:8000/runners/${id}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`
-      },
-      body: JSON.stringify({
-        grade: grade,
-        phone: phone,
-        email: email,
-        team: team
-      })
-    }).then(getSingleRunner)
-};
 
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
