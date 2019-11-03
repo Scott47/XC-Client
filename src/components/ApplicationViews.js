@@ -4,17 +4,18 @@ import { withRouter, Redirect } from "react-router-dom";
 import useSimpleAuth from "../ui/useSimpleAuth";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
+import Home from "./Home";
 import Runner from "./runner/RunnerList";
 import NewRunner from "./runner/NewRunner";
 import RunnerDetails from "./runner/RunnerDetail";
 import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
 import TeamDetail from "./team/TeamDetail";
+import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
   const [runners, setRunners] = useState([]);
-  const [teams, setTeams] = useState([]);
 
   useEffect(() => {
     fetch(`http://localhost:8000/runners`, {
@@ -27,21 +28,18 @@ const ApplicationViews = () => {
     })
       .then(response => response.json())
       .then(setRunners);
-
-    fetch(`http://localhost:8000/teams`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => response.json())
-      .then(setTeams);
   }, []);
 
   return (
     <React.Fragment>
+      <Route render={props => <NavBar {...props} />} />
+      <Route
+        exact
+        path="/"
+        render={props => {
+          return <Home {...props} />;
+        }}
+      />
       <Route
         path="/register"
         render={props => {

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./Runner.css"
+import "./Runner.css";
 
 const EditRunner = props => {
   const [runnerInfo, setRunnerInfo] = useState({});
+  const [runnerTeams, setRunnerTeams] = useState([]);
   const grade = useRef();
   const phone = useRef();
   const email = useRef();
   const team = useRef();
   const address = useRef();
-
 
   const getSingleRunner = id => {
     return fetch(`http://localhost:8000/runners/${id}`, {
@@ -21,6 +21,19 @@ const EditRunner = props => {
     })
       .then(e => e.json())
       .then(setRunnerInfo);
+  };
+
+  const getRunnerTeams = () => {
+    fetch(`http://localhost:8000/teams`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(setRunnerTeams);
   };
 
   const updateRunnerInfo = (runner, id) => {
@@ -45,32 +58,71 @@ const EditRunner = props => {
 
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
+    getRunnerTeams();
   }, []);
 
-  console.log(runnerInfo);
+  console.log(runnerInfo.team);
   return (
     <>
-      {runnerInfo.id  ? (
+      {runnerInfo.id ? (
         <div key={runnerInfo.id} className="card card-edit">
           <h3>
             {runnerInfo.first_name} {runnerInfo.last_name}
           </h3>
           <ul>
-            <li>Grade:
-              <input ref={grade} type="text" name="grade" defaultValue={runnerInfo.grade} required></input>
+            <li>
+              Grade:
+              <input
+                ref={grade}
+                type="text"
+                name="grade"
+                defaultValue={runnerInfo.grade}
+                required
+              ></input>
             </li>
-            <li>Phone:
-              <input ref={phone} type="text" name="phone" defaultValue={runnerInfo.phone} required ></input>
+            <li>
+              Phone:
+              <input
+                ref={phone}
+                type="text"
+                name="phone"
+                defaultValue={runnerInfo.phone}
+                required
+              ></input>
             </li>
-            <li>Address:
-              <input ref={address} type="text" name="phone" defaultValue={runnerInfo.address} required></input>
+            <li>
+              Address:
+              <input
+                ref={address}
+                type="text"
+                name="phone"
+                defaultValue={runnerInfo.address}
+                required
+              ></input>
             </li>
-            <li>Email:
-              <input ref={email} type="text" name="email" defaultValue={runnerInfo.email} required></input>
+            <li>
+              Email:
+              <input
+                ref={email}
+                type="text"
+                name="email"
+                defaultValue={runnerInfo.email}
+                required
+              ></input>
             </li>
-            <li>Team:
-              <input ref={team} type="text" name="team" defaultValue={runnerInfo.team.team_name} required></input>
+            <li>
+              Team:
+              <select type="text" name="team" ref={team}>
+                {runnerTeams.map(team => {
+                  return (
+                    <option key={team.id} id={team.id} value={team.id}>
+                      {team.team_name}
+                    </option>
+                  );
+                })}
+              </select>
             </li>
+
             <br />
             <button onClick={() => updateRunnerInfo(runnerInfo, runnerInfo.id)}>
               Update Runner Information
