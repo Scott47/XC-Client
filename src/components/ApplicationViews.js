@@ -117,6 +117,7 @@ const ApplicationViews = () => {
         }}
       />
       <Route
+        exact
         path="/meets"
         render={props => {
           if (isAuthenticated()) return <MeetList {...props} />;

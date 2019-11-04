@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 const MeetDetails = props => {
@@ -40,9 +40,9 @@ const MeetDetails = props => {
           <p>
             <strong>Address:</strong> {oneMeet.address}
           </p>
-          <p>
+          <a href={`${oneMeet.url}`} >
             <strong>Link:</strong> {oneMeet.url}
-          </p>
+          </a>
           <p>
             <strong>Distance:</strong> {oneMeet.distance}
           </p>
