@@ -13,6 +13,7 @@ import TeamList from "./team/TeamList";
 import TeamDetail from "./team/TeamDetail";
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
+import ReportLinks from "./reports/ReportLinks"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
@@ -130,6 +131,14 @@ const ApplicationViews = () => {
         render={props => {
           let meet = meets.find(meet => meet.id === props.match.params.meetId);
           return <MeetDetails meet={meet} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/reports"
+        render={props => {
+          if (isAuthenticated()) return <ReportLinks {...props} />;
+          else return <Redirect to="/login" />;
         }}
       />
     </React.Fragment>
