@@ -61,7 +61,6 @@ const EditRunner = props => {
     getRunnerTeams();
   }, []);
 
-  console.log(runnerInfo.team);
   return (
     <>
       {runnerInfo.id ? (

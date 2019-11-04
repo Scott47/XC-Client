@@ -24,8 +24,9 @@ const TeamList = props => {
         .then(setMyTeams);
     }
   };
+
   useEffect(getMyTeams, []);
-  console.log(MyTeams)
+
   return (
     <>
       <div className="MyTeams-Div">
