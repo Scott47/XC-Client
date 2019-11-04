@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import Team from "./Team"
+import Meet from "./Meet"
 
 //Author: Scott Silver
-//Purpose: Display Teams associated with coach/user
-//Methods: GET Teams
+//Purpose: Display Meets associated with coach/user
+//Methods: GET
 
-const TeamList = props => {
-  const [MyTeams, setMyTeams] = useState([]);
+const MeetList = props => {
+  const [meets, setMeets] = useState({});
   const { isAuthenticated } = useSimpleAuth();
 
-  const getMyTeams = () => {
+  const getMeets = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/teams`, {
+      fetch(`http://localhost:8000/meets`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -21,32 +21,31 @@ const TeamList = props => {
         }
       })
         .then(response => response.json())
-        .then(setMyTeams);
+        .then(setMeets);
     }
   };
 
-  useEffect(getMyTeams, []);
+useEffect(getMeets, []);
 
   return (
     <>
-      <div className="MyTeams-Div">
-        {MyTeams.length > 0 ? (
-          MyTeams.map(team => {
+      <div className="Meets-Div">
+        {meets.length > 0 ? (
+          meets.map(meet => {
             return (
-              <Team
-                key={team.id}
-                team={team}
-                getMyTeams={getMyTeams}
-              />
+              <Meet className="nav-link" to={`/meets/${meet.id}`}
+                key={meet.id}
+                meet={meet}
+                getMeets={getMeets}/>
             );
           })
         ) : (
             <p>
-            You have no current runners
+            You have no meets
           </p>
         )}
       </div>
     </>
   );
 };
-export default TeamList;
+export default MeetList;

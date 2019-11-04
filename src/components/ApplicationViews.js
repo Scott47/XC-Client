@@ -11,11 +11,14 @@ import RunnerDetails from "./runner/RunnerDetail";
 import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
 import TeamDetail from "./team/TeamDetail";
+import MeetList from "./meet/MeetList";
+import MeetDetails from "./meet/MeetDetail";
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
   const [runners, setRunners] = useState([]);
+  const [meets, setMeets] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:8000/runners`, {
@@ -28,6 +31,16 @@ const ApplicationViews = () => {
     })
       .then(response => response.json())
       .then(setRunners);
+    fetch(`http://localhost:8000/meets`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`
+      }
+    })
+      .then(response => response.json())
+      .then(setMeets);
   }, []);
 
   return (
@@ -101,6 +114,22 @@ const ApplicationViews = () => {
               <EditRunner {...props} />
             </>
           );
+        }}
+      />
+      <Route
+        exact
+        path="/meets"
+        render={props => {
+          if (isAuthenticated()) return <MeetList {...props} />;
+          else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/meets/:meetId(\d+)"
+        render={props => {
+          let meet = meets.find(meet => meet.id === props.match.params.meetId);
+          return <MeetDetails meet={meet} {...props} />;
         }}
       />
     </React.Fragment>
