@@ -31,7 +31,6 @@ const TeamDetail = props => {
     getTeam(props.match.params.teamId);
   }, []);
 
-
   return (
     <>
       {roster.runnerteam.map(runner => {

@@ -23,6 +23,7 @@ const RunnerDetails = props => {
       .then(setRunner);
   };
 
+
   const deleteRunner = () => {
     if (isAuthenticated()) {
       fetch(`http://localhost:8000/runners/${props.runner.id}`, {
@@ -62,16 +63,16 @@ const RunnerDetails = props => {
           </p>
           <p>
             <strong>Parent:</strong> {singleRunner.parent}
-          </p>
-          <Link>
-            <p>
-              <strong>Team:</strong> {singleRunner.team.team_name}
-              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <button onClick={() => {
                     props.history.push(`/editrunner/${singleRunner.id}`);
                   }} className="edit-button">
                 <a href={`/editrunner/${singleRunner.id}`}>Edit Info</a>
               </button>
+          </p>
+          <Link className="nav-link" to={`/teams/${singleRunner.team.id}`}>
+            <p>
+              <strong>Team:</strong> {singleRunner.team.team_name}
             </p>
           </Link>
           <p>
