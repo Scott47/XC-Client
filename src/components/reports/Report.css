@@ -1,0 +1,8 @@
+ .report {
+    color: white;
+}
+.table-heading {
+    display: flex-wrap;
+    flex-direction: row;
+    color: white;
+}

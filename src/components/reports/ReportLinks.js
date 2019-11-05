@@ -5,6 +5,9 @@ import { Container, Row, Col } from "reactstrap";
 const ReportLinks = props => {
   return (
     <>
+    <div
+        className={`report-${props.report.id}`}
+      ></div>
       <Container>
         <br></br>
         <br></br>
@@ -19,7 +22,7 @@ const ReportLinks = props => {
             <Link>2018</Link>
           </Col>
           <Col>
-            <Link>2019</Link>
+            <Link to={`/reports/${props.report.id}`}>2019</Link>
           </Col>
         </Row>
         <br></br>

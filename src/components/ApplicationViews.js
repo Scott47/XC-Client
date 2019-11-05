@@ -19,20 +19,8 @@ import RunnerReport from "./reports/RunnerReport"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
+  const [ report, setReport] = useState({})
   const { isAuthenticated } = useSimpleAuth();
-
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/runners`, {
-  //     method: "GET",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //       Authorization: `Token ${localStorage.getItem("token")}`
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(setRunners);
-  // }, []);
 
   return (
     <React.Fragment>
@@ -130,8 +118,15 @@ const ApplicationViews = () => {
         exact
         path="/reports"
         render={props => {
-          if (isAuthenticated()) return <ReportLinks {...props} />;
+          if (isAuthenticated()) return <ReportLinks report={report} {...props} />;
           else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/reports/:reportId(\d+)"
+        render={props => {
+          return <RunnerReport report={report} {...props} />;
         }}
       />
     </React.Fragment>

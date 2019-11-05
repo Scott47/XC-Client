@@ -9,7 +9,7 @@ const Meet = props => {
         className={`meet-${props.meet.id}`}
       >
           <div>
-        <section className="team">
+        <section className="meet">
           <Link className="nav-link" to={`/meets/${props.meet.id}`}>
             <p>
               <strong>
