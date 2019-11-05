@@ -13,7 +13,9 @@ import TeamList from "./team/TeamList";
 import TeamDetail from "./team/TeamDetail";
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
+import AddMeet from "./meet/AddMeet"
 import ReportLinks from "./reports/ReportLinks"
+import RunnerReport from "./reports/RunnerReport"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
@@ -131,6 +133,13 @@ const ApplicationViews = () => {
         render={props => {
           let meet = meets.find(meet => meet.id === props.match.params.meetId);
           return <MeetDetails meet={meet} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/addmeet"
+        render={props => {
+          return <AddMeet {...props} />;
         }}
       />
       <Route
