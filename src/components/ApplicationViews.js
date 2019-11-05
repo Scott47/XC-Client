@@ -13,35 +13,26 @@ import TeamList from "./team/TeamList";
 import TeamDetail from "./team/TeamDetail";
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
+import AddMeet from "./meet/AddMeet"
+import ReportLinks from "./reports/ReportLinks"
+import RunnerReport from "./reports/RunnerReport"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
   const { isAuthenticated } = useSimpleAuth();
-  const [runners, setRunners] = useState([]);
-  const [meets, setMeets] = useState([])
 
-  useEffect(() => {
-    fetch(`http://localhost:8000/runners`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => response.json())
-      .then(setRunners);
-    fetch(`http://localhost:8000/meets`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Token ${localStorage.getItem("token")}`
-      }
-    })
-      .then(response => response.json())
-      .then(setMeets);
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://localhost:8000/runners`, {
+  //     method: "GET",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: `Token ${localStorage.getItem("token")}`
+  //     }
+  //   })
+  //     .then(response => response.json())
+  //     .then(setRunners);
+  // }, []);
 
   return (
     <React.Fragment>
@@ -100,10 +91,7 @@ const ApplicationViews = () => {
         exact
         path="/runners/:runnerId(\d+)"
         render={props => {
-          let runner = runners.find(
-            runner => runner.id === +props.match.params.runnerId
-          );
-          return <RunnerDetails runner={runner} {...props} />;
+          return <RunnerDetails {...props} />;
         }}
       />
       <Route
@@ -128,8 +116,22 @@ const ApplicationViews = () => {
         exact
         path="/meets/:meetId(\d+)"
         render={props => {
-          let meet = meets.find(meet => meet.id === props.match.params.meetId);
-          return <MeetDetails meet={meet} {...props} />;
+          return <MeetDetails {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/addmeet"
+        render={props => {
+          return <AddMeet {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/reports"
+        render={props => {
+          if (isAuthenticated()) return <ReportLinks {...props} />;
+          else return <Redirect to="/login" />;
         }}
       />
     </React.Fragment>

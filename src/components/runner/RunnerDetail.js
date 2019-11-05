@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from 'reactstrap'
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 const RunnerDetails = props => {
@@ -64,11 +65,11 @@ const RunnerDetails = props => {
           <p>
             <strong>Parent:</strong> {singleRunner.parent}
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-              <button onClick={() => {
+              <Button onClick={() => {
                     props.history.push(`/editrunner/${singleRunner.id}`);
                   }} className="edit-button">
                 <a href={`/editrunner/${singleRunner.id}`}>Edit Info</a>
-              </button>
+              </Button>
           </p>
           <Link className="nav-link" to={`/teams/${singleRunner.team.id}`}>
             <p>
@@ -89,10 +90,9 @@ const RunnerDetails = props => {
                 );
               })
             : ""}
-          <br />
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <Button onClick={deleteRunner}>Remove Runner</Button>
           <br></br>
-          <br></br>
-          <button onClick={deleteRunner}>Remove Runner</button>
         </section>
       ) : (
         <div></div>
