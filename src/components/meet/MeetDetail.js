@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from 'reactstrap'
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 const MeetDetails = props => {
@@ -17,6 +18,18 @@ const MeetDetails = props => {
     })
       .then(e => e.json())
       .then(setOneMeet);
+  };
+
+  const deleteMeet = () => {
+    if (isAuthenticated()) {
+      fetch(`http://localhost:8000/meets/${props.match.params.meetId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Token ${localStorage.getItem("token")}`
+        }
+      })
+        .then(props.history.push("/meets"));
+    }
   };
 
 
@@ -40,12 +53,19 @@ const MeetDetails = props => {
           <p>
             <strong>Address:</strong> {oneMeet.address}
           </p>
+          <p><strong>Link:  </strong>
           <a href={`${oneMeet.url}`} >
-            <strong>Link:</strong> {oneMeet.url}
+             {oneMeet.url}
           </a>
+          </p>
           <p>
             <strong>Distance:</strong> {oneMeet.distance}
           </p>
+          <p>
+            <strong>Number of Runners:</strong> {oneMeet.number_of_runners}
+          </p>
+
+          <Button onClick={deleteMeet}>Delete</Button>
         </section>
       ) : (
         <div></div>

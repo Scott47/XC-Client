@@ -12,6 +12,7 @@ const AddMeet = props => {
   const url= useRef();
   const address = useRef();
   const distance = useRef();
+  const number_of_runners = useRef()
 
 
   // function that adds a runner to the runners list on the runners page
@@ -25,7 +26,8 @@ const AddMeet = props => {
       course: course.current.value,
       url: url.current.value,
       address: address.current.value,
-      distance: distance.current.value
+      distance: distance.current.value,
+      number_of_runners: number_of_runners.current.value
     };
     createMeet(newMeet).then(() => {
       props.history.push({
@@ -113,13 +115,24 @@ return (
             />
           </fieldset>
           <fieldset>
-            <label className="card-text" htmlFor="location"> Distance </label>
+            <label className="card-text" htmlFor="distance"> Distance </label>
             <input
               ref={distance}
               type="text"
               name="distance"
               className="form-control"
               placeholder="Distance"
+              required
+            />
+          </fieldset>
+          <fieldset>
+            <label className="card-text" htmlFor="runners"> Number of Runners </label>
+            <input
+              ref={number_of_runners}
+              type="number"
+              name="runners"
+              className="form-control"
+              placeholder="Runners"
               required
             />
           </fieldset>
