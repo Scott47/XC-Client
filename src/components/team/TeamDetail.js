@@ -29,7 +29,7 @@ const TeamDetail = props => {
 
   useEffect(() => {
     getTeam(props.match.params.teamId);
-  }, []);
+  }, [props.match.params.teamId]);
 
   return (
     <>

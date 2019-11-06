@@ -8,13 +8,13 @@ import './Report.css'
 //Purpose: Display Meets associated with coach/user
 //Methods: GET
 
-const RunnerReport = props => {
+const RunnerReport18 = props => {
   const [reports, setReports] = useState({});
   const { isAuthenticated } = useSimpleAuth();
 
   const getReports = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/reports?meet_year=2019`, {
+      fetch(`http://localhost:8000/reports?meet_year=2018`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -46,4 +46,4 @@ return (
     </>
   );
 };
-export default RunnerReport;
+export default RunnerReport18;

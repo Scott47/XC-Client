@@ -7,34 +7,37 @@ import './Report.css'
 const Report = props => {
   return (
     <>
-    <div
-        className={`report-${props.report.id}`}
-      ></div>
         <Table className='report'>
-          <thead>
+            <thead>
             <tr className='report'>
-              <th>Runner</th>
-              <th>Meet</th>
-              <th>Date</th>
-              {/* <th>Team Name</th> */}
-              <th>Race Distance</th>
-              <th>Runner Time</th>
-              <th>Runner Pace</th>
-              <th>Place</th>
+                <th>Runner</th>
+                <th>Meet</th>
+                <th>Date</th>
+                <th>Team</th>
+                <th>Distance</th>
+                <th>Runner Time</th>
+                <th>Runner Pace</th>
+                <th>Place</th>
             </tr>
-          </thead>
-          <tbody>
-            <tr className='report'>
-              <td>{props.report.runner.last_name}, {props.report.runner.first_name}</td>
-              <td>{props.report.meet.name}</td>
-              <td>{props.report.meet.date.slice(0, 10)}</td>
-              {/* <td>{props.report.team_name}</td> */}
-              <td>{props.report.meet.distance}</td>
-              <td>{props.report.meet_time}</td>
-              <td>{props.report.pace} mins/mile</td>
-              <td>{props.report.place}</td>
-            </tr>
-          </tbody>
+            </thead>
+            <tbody>
+            {
+                props.reports.map(report => {
+                    return (
+                        <tr className='report'>
+                        <td>{report.runner.last_name}, {report.runner.first_name}</td>
+                        <td>{report.meet.name}</td>
+                        <td>{report.meet.date.slice(0, 10)}</td>
+                        <td>{report.runner.team.team_name}</td>
+                        <td>{report.meet.distance} mi</td>
+                        <td>{report.meet_time} mins</td>
+                        <td>{report.pace}/mile</td>
+                        <td>{report.place}th</td>
+                        </tr>
+                    );
+                })
+            }
+            </tbody>
         </Table>
 
     </>

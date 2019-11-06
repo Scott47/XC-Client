@@ -14,7 +14,7 @@ const TableHeading = props => {
             <tr>
               <th>Runner</th>
               <th>Date of Meet</th>
-              {/* <th>Team Name</th> */}
+              <th>Team Name</th>
               <th>Race Distance</th>
               <th>Runner Time</th>
               <th>Runner Pace</th>

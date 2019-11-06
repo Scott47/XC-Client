@@ -41,7 +41,7 @@ const RunnerDetails = props => {
 
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
-  }, []);
+  }, [props.match.params.runnerId]);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import useSimpleAuth from "../ui/useSimpleAuth";
 import Register from "./auth/Register";
@@ -16,10 +16,12 @@ import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
 import ReportLinks from "./reports/ReportLinks"
 import RunnerReport from "./reports/RunnerReport"
+import RunnerReport18 from "./reports/RunnerReport18"
+import RunnerReport17 from "./reports/RunnerReport17"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
-  const [ report, setReport] = useState({})
+  const [ report ] = useState({})
   const { isAuthenticated } = useSimpleAuth();
 
   return (
@@ -124,9 +126,44 @@ const ApplicationViews = () => {
       />
       <Route
         exact
-        path="/reports/:reportId(\d+)"
+        path="/runnerreports2017"
         render={props => {
-          return <RunnerReport report={report} {...props} />;
+          return <RunnerReport17 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/runnerreports2018"
+        render={props => {
+          return <RunnerReport18 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/runnerreports2019"
+        render={props => {
+          return <RunnerReport report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2017"
+        render={props => {
+          return <TeamReport17 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2018"
+        render={props => {
+          return <TeamReport18 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2019"
+        render={props => {
+          return <TeamReport19 report={report} {...props} />
         }}
       />
     </React.Fragment>
