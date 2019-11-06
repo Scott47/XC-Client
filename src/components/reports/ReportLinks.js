@@ -22,7 +22,7 @@ const ReportLinks = props => {
             <Link>2018</Link>
           </Col>
           <Col>
-            <Link to={`/reports/${props.report.id}`}>2019</Link>
+            <Link>2019</Link>
           </Col>
         </Row>
         <br></br>
