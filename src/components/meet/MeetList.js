@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import { Link } from "react-router-dom"
 import { Button } from 'reactstrap'
 import Meet from "./Meet"
 

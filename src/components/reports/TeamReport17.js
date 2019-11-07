@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../ui/useSimpleAuth";
 import { Button } from 'reactstrap'
-import Report from "./Report"
+import TeamReport from "./TeamReport"
 import './Report.css'
 
 //Author: Scott Silver
@@ -14,7 +14,7 @@ const RunnerReport = props => {
 
   const getReports = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/reports?meet_year=2019`, {
+      fetch(`http://localhost:8000/teammeets?meet_year=2017`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -33,7 +33,7 @@ useEffect(getReports, []);
 return (
     <>
         {reports.length > 0 ?
-            <Report className="report"
+            <TeamReport className="report"
             reports={reports}
             getreports={getReports}
             />

@@ -1,5 +1,5 @@
 import { Route } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import useSimpleAuth from "../ui/useSimpleAuth";
 import Register from "./auth/Register";
@@ -16,23 +16,32 @@ import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
 import ReportLinks from "./reports/ReportLinks"
 import RunnerReport from "./reports/RunnerReport"
+import RunnerReport18 from "./reports/RunnerReport18"
+import RunnerReport17 from "./reports/RunnerReport17"
+import TeamReport19 from "./reports/TeamReport19"
+import TeamReport18 from "./reports/TeamReport18"
+import TeamReport17 from "./reports/TeamReport17"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
+  const [ report ] = useState({})
+  const [ myTeams, setMyTeams] = useState([])
   const { isAuthenticated } = useSimpleAuth();
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:8000/runners`, {
-  //     method: "GET",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //       Authorization: `Token ${localStorage.getItem("token")}`
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(setRunners);
-  // }, []);
+  const getMyTeams = () => {
+    if (isAuthenticated()) {
+      fetch(`http://localhost:8000/teams`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Token ${localStorage.getItem("token")}`
+        }
+      })
+        .then(response => response.json())
+        .then(setMyTeams);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -123,15 +132,57 @@ const ApplicationViews = () => {
         exact
         path="/addmeet"
         render={props => {
-          return <AddMeet {...props} />;
+          return <AddMeet getMyTeams={getMyTeams} myTeams={myTeams} {...props} />;
         }}
       />
       <Route
         exact
         path="/reports"
         render={props => {
-          if (isAuthenticated()) return <ReportLinks {...props} />;
+          if (isAuthenticated()) return <ReportLinks report={report} {...props} />;
           else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/runnerreports2017"
+        render={props => {
+          return <RunnerReport17 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/runnerreports2018"
+        render={props => {
+          return <RunnerReport18 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/runnerreports2019"
+        render={props => {
+          return <RunnerReport report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2017"
+        render={props => {
+          return <TeamReport17 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2018"
+        render={props => {
+          return <TeamReport18 report={report} {...props} />
+        }}
+      />
+      <Route
+        exact
+        path="/teamreports2019"
+        render={props => {
+          return <TeamReport19 report={report} {...props} />
         }}
       />
     </React.Fragment>

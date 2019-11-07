@@ -59,7 +59,7 @@ const EditRunner = props => {
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
     getRunnerTeams();
-  }, []);
+  }, [props.match.params.runnerId]);
 
   return (
     <>

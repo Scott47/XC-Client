@@ -39,7 +39,7 @@ const useSimpleAuth = () => {
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
                     localStorage.setItem( "token", res.token )
-                    localStorage.setItem("user_id", res.customer_id)
+                    localStorage.setItem("user_id", res.coach_id)
                     localStorage.setItem("userName", credentials.username)
                     setIsLoggedIn(true)
                 }
@@ -49,6 +49,7 @@ const useSimpleAuth = () => {
     const logout = () => {
         setIsLoggedIn(false)
         localStorage.removeItem("token")
+        localStorage.removeItem("userName")
         window.location = "/login"
     }
 

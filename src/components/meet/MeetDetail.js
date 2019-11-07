@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Button } from 'reactstrap'
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
@@ -35,7 +34,7 @@ const MeetDetails = props => {
 
   useEffect(() => {
     getOneMeet(props.match.params.meetId);
-  }, []);
+  }, [props.match.params.meetId]);
 
   return (
     <>

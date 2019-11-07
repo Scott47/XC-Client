@@ -41,7 +41,7 @@ const RunnerDetails = props => {
 
   useEffect(() => {
     getSingleRunner(props.match.params.runnerId);
-  }, []);
+  }, [props.match.params.runnerId]);
 
   return (
     <>
@@ -81,9 +81,10 @@ const RunnerDetails = props => {
           </p>
           {singleRunner.runnermeet.length > 0
             ? singleRunner.runnermeet.map(runnermeet => {
+              console.log(singleRunner.runnermeet)
                 return (
                   <>
-                    <Link>
+                    <Link to={`/meets/${runnermeet.meet.id}`}>
                       <p>{runnermeet.meet.name}</p>
                     </Link>
                   </>
