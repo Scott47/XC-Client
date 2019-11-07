@@ -23,6 +23,7 @@ const Report = props => {
             <tbody>
             {
                 props.reports.map(report => {
+                    console.log(report)
                     return (
                         <tr className='report'>
                         <td>{report.runner.last_name}, {report.runner.first_name}</td>

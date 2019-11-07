@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 // Author - Scott Silver
 // Purpose - Coach can add runner to roster
@@ -45,6 +45,8 @@ const AddMeet = props => {
       body: JSON.stringify(newMeet)
     }).then(res => res.json());
   };
+
+  useEffect(props.getMyTeams, []);
 
   return (
     <>

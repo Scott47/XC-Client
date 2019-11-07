@@ -32,13 +32,13 @@ const ReportLinks = props => {
             <h3>Team</h3>
           </Col>
           <Col>
-            <Link to="/teamreportsyear2017">2017</Link>
+            <Link to="/teamreports2017">2017</Link>
           </Col>
           <Col>
-            <Link to="/teamreportsyear2018">2018</Link>
+            <Link to="/teamreports2018">2018</Link>
           </Col>
           <Col>
-            <Link to="/teamreportsyear2019">2019</Link>
+            <Link to="/teamreports2019">2019</Link>
           </Col>
         </Row>
       </Container>

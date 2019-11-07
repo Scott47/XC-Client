@@ -18,11 +18,30 @@ import ReportLinks from "./reports/ReportLinks"
 import RunnerReport from "./reports/RunnerReport"
 import RunnerReport18 from "./reports/RunnerReport18"
 import RunnerReport17 from "./reports/RunnerReport17"
+import TeamReport19 from "./reports/TeamReport19"
+import TeamReport18 from "./reports/TeamReport18"
+import TeamReport17 from "./reports/TeamReport17"
 import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
   const [ report ] = useState({})
+  const [ myTeams, setMyTeams] = useState([])
   const { isAuthenticated } = useSimpleAuth();
+
+  const getMyTeams = () => {
+    if (isAuthenticated()) {
+      fetch(`http://localhost:8000/teams`, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Token ${localStorage.getItem("token")}`
+        }
+      })
+        .then(response => response.json())
+        .then(setMyTeams);
+    }
+  };
 
   return (
     <React.Fragment>
@@ -113,7 +132,7 @@ const ApplicationViews = () => {
         exact
         path="/addmeet"
         render={props => {
-          return <AddMeet {...props} />;
+          return <AddMeet getMyTeams={getMyTeams} myTeams={myTeams} {...props} />;
         }}
       />
       <Route

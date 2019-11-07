@@ -4,7 +4,7 @@ import './Report.css'
 // import { Link } from "react-router-dom";
 
 
-const Report = props => {
+const TeamReport = props => {
   return (
     <>
         <Table className='report'>
@@ -43,4 +43,4 @@ const Report = props => {
   );
 };
 
-export default Report;
+export default TeamReport;

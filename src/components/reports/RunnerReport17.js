@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import { Button, Col } from 'reactstrap'
+import { Button } from 'reactstrap'
 import Report from "./Report"
 import './Report.css'
 
