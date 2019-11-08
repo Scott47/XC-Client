@@ -93,6 +93,9 @@ const RunnerDetails = props => {
             : ""}
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           <Button onClick={deleteRunner}>Remove Runner</Button>
+          <Link to={`/assigntomeet/${runnermeet.runner.id}`}>
+                Assign to Meet
+            </Link>
           <br></br>
         </section>
       ) : (

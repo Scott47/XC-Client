@@ -91,6 +91,14 @@ const ApplicationViews = () => {
       />
       <Route
         exact
+        path="/assigntomeet/:runnerId(\d+)"
+        render={props => {
+          if (isAuthenticated()) return <MeetForm {...props} />;
+          else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
         path="/addrunner"
         render={props => {
           return <NewRunner {...props} />;
