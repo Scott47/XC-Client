@@ -30,7 +30,7 @@ const TeamReport = props => {
                         <td>{report.meet.distance} mi</td>
                         <td>{report.team.team_name}</td>
                         <td>{report.total_time} mins</td>
-                        <td>{report.points}/mile</td>
+                        <td>{report.points}</td>
                         {/* <td>{report.place}th</td> */}
                         </tr>
                     );

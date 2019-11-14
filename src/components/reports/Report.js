@@ -28,12 +28,12 @@ const Report = props => {
                         <tr className='report'>
                         <td>{report.runner.last_name}, {report.runner.first_name}</td>
                         <td>{report.meet.name}</td>
-                        <td>{report.meet.date.slice(0, 10)}</td>
+                        <td>{report.meet.date.slice(5, 10)}</td>
                         <td>{report.runner.team.team_name}</td>
                         <td>{report.meet.distance} mi</td>
                         <td>{report.meet_time} mins</td>
                         <td>{report.pace}/mile</td>
-                        <td>{report.place}th</td>
+                        <td>{report.place}</td>
                         </tr>
                     );
                 })

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import xclogo from "../xclogo.jpg"
 import "bootstrap/dist/css/bootstrap.min.css"
 import useSimpleAuth from "../../ui/useSimpleAuth"
 
@@ -9,6 +10,7 @@ const NavBar = props => {
     return (
         <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow navbar1">
             <ul className="nav nav-pills nav-fill">
+            <img class="logo" src={xclogo} height="50px" width="50px" alt="XC COACH"/>
                 <li className="nav-item">
                     <Link className="nav-link" to="/">Home</Link>
                 </li>

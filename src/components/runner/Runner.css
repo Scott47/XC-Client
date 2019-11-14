@@ -4,3 +4,14 @@
 .card-edit {
     color: black;
 }
+
+.myRunners-Div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    white-space: normal;
+}
+.runner {
+    flex-basis: 24%;
+}
+

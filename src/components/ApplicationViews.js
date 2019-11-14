@@ -14,6 +14,7 @@ import TeamDetail from "./team/TeamDetail";
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
+import MeetRunnerForm from "./meet/MeetRunnerForm"
 import ReportLinks from "./reports/ReportLinks"
 import RunnerReport from "./reports/RunnerReport"
 import RunnerReport18 from "./reports/RunnerReport18"
@@ -25,6 +26,7 @@ import NavBar from "./nav/NavBar";
 
 const ApplicationViews = () => {
   const [ report ] = useState({})
+  const [ runner ] = useState({})
   const [ myTeams, setMyTeams] = useState([])
   const { isAuthenticated } = useSimpleAuth();
 
@@ -133,6 +135,14 @@ const ApplicationViews = () => {
         path="/addmeet"
         render={props => {
           return <AddMeet getMyTeams={getMyTeams} myTeams={myTeams} {...props} />;
+        }}
+      />
+      <Route
+        exact
+        path="/assigntomeet/:runnerId(\d+)"
+        render={props => {
+          if (isAuthenticated()) return <MeetRunnerForm runner={runner} {...props} />;
+          else return <Redirect to="/login" />;
         }}
       />
       <Route
