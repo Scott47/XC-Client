@@ -63,7 +63,6 @@ const MeetDetails = props => {
           <p>
             <strong>Number of Runners:</strong> {oneMeet.number_of_runners}
           </p>
-
           <Button onClick={deleteMeet}>Delete</Button>
         </section>
       ) : (

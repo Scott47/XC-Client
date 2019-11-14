@@ -6,7 +6,7 @@ const Runner = props => {
   return (
     <>
       <div
-        className={`card runner-${props.runner.id}`}
+        className={`card runner runner-${props.runner.id}`}
         style={({ height: "2rem" }, { width: "12rem" })}
       >
           <div className="card-body">

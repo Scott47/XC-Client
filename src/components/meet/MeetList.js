@@ -23,6 +23,7 @@ const MeetList = props => {
       })
         .then(response => response.json())
         .then(setMeets);
+
     }
   };
 
