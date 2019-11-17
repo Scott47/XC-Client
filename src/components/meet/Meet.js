@@ -13,7 +13,7 @@ const Meet = props => {
           <Link className="nav-link" to={`/meets/${props.meet.id}`}>
             <p>
               <strong>
-                {props.meet.name}
+                {props.meet.name},    {props.meet.date.slice(0,10)}
               </strong>
             </p>
           </Link>

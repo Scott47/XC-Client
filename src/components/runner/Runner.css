@@ -1,5 +1,5 @@
 .card-body {
-    background-color: rgb(78, 76, 76)
+    background-color: rgb(100, 94, 94)
 }
 .card-edit {
     color: black;
@@ -13,5 +13,9 @@
 }
 .runner {
     flex-basis: 24%;
+}
+form {
+    display: flex;
+    justify-content: center;
 }
 

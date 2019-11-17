@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 
 // Author - Scott Silver
 // Purpose - Coach can add runner to roster
-// Methods - GET, POST
+// Methods - POST
 
 const AddMeet = props => {
   const name = useRef();

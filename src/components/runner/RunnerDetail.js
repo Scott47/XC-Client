@@ -25,9 +25,9 @@ const RunnerDetails = props => {
   };
 
 
-  const deleteRunner = () => {
+  const deleteRunner = (id) => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/runners/${props.runner.id}`, {
+      fetch(`http://localhost:8000/runners/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`
@@ -98,6 +98,7 @@ const RunnerDetails = props => {
 
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           <Button onClick={deleteRunner}>Remove Runner</Button>
+          {/* <Button onClick={()=>{deleteRunner()}}>Remove Runner</Button> */}
           <br></br>
         </section>
       ) : (

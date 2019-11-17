@@ -45,6 +45,7 @@ const ApplicationViews = () => {
     }
   };
 
+
   return (
     <React.Fragment>
       <Route render={props => <NavBar {...props} />} />
@@ -102,7 +103,7 @@ const ApplicationViews = () => {
         exact
         path="/runners/:runnerId(\d+)"
         render={props => {
-          return <RunnerDetails {...props} />;
+          return <RunnerDetails runner={runner}  {...props} />;
         }}
       />
       <Route

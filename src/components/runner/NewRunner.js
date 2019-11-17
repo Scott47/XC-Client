@@ -1,4 +1,5 @@
-import React, { useRef} from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Button } from 'reactstrap'
 
 // Author - Scott Silver
 // Purpose - Coach can add runner to roster
@@ -6,6 +7,7 @@ import React, { useRef} from "react";
 
 
 const NewRunner = props => {
+  const [runnerTeams, setRunnerTeams] = useState([]);
   const grade = useRef();
   const first_name = useRef();
   const last_name = useRef();
@@ -50,11 +52,25 @@ const createRunner = newRunner => {
     body: JSON.stringify(newRunner)
   }).then(res => res.json());
 };
+const getRunnerTeams = () => {
+  fetch(`http://localhost:8000/teams`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Token ${localStorage.getItem("token")}`
+    }
+  })
+    .then(response => response.json())
+    .then(setRunnerTeams);
+};
+
+useEffect(getRunnerTeams, [])
 
 return (
     <>
 {
-        <form className="form--login" onSubmit={addToRunners}>
+        <form className="d-flex justify-content-center mb-4" onSubmit={addToRunners}>
           <div >
             <div >
           <h1 >New Runner Form</h1>
@@ -138,19 +154,23 @@ return (
               required
             />
           </fieldset>
+          <br></br>
           <fieldset>
-            <label className="card-text" htmlFor="team"> Team </label>
-            <input
-              ref={team}
-              type="number"
-              name="team"
-              className="form-control"
-              placeholder="Team"
-              required
-            />
+              Team
+              <p></p><select type="text" name="team" ref={team}>
+                {runnerTeams.map(team => {
+                  return (
+                    <option key={team.id} id={team.id} value={team.id}>
+                      {team.team_name}
+                    </option>
+                  );
+                })}
+              </select>
           </fieldset>
+          <br></br>
+
           </div>
-          <button onClick={e => addToRunners(e)}>Add Runner</button>
+          <Button onClick={e => addToRunners(e)}>Add Runner</Button>
           </div>
           </form>
 }
