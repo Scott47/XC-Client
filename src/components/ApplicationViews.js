@@ -10,7 +10,7 @@ import NewRunner from "./runner/NewRunner";
 import RunnerDetails from "./runner/RunnerDetail";
 import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
-import TeamDetail from "./team/TeamDetail";
+import TeamDetails from "./team/TeamDetails";
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
@@ -22,7 +22,7 @@ import RunnerReport17 from "./reports/RunnerReport17"
 import TeamReport19 from "./reports/TeamReport19"
 import TeamReport18 from "./reports/TeamReport18"
 import TeamReport17 from "./reports/TeamReport17"
-import NavBar from "./nav/NavBar";
+import NavBar from "./nav/NavBar"
 
 const ApplicationViews = () => {
   const [ report ] = useState({})
@@ -87,7 +87,7 @@ const ApplicationViews = () => {
         exact
         path="/teams/:teamId(\d+)"
         render={props => {
-          if (isAuthenticated()) return <TeamDetail {...props} />;
+          if (isAuthenticated()) return <TeamDetails {...props} />;
           else return <Redirect to="/login" />;
         }}
       />

@@ -8,13 +8,12 @@ import singleRunner from "../runner/RunnerDetail"
 //Methods: GET
 
 const TeamDetail = props => {
-  const [roster, setRoster] = useState({ runnerteam: [{ first_name: "" }] });
-  // const [ runner, setRunner ] = useState([])
+  const [roster, setRoster] = useState([]);
   const { isAuthenticated } = useSimpleAuth();
 
   const getTeam = id => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/teams/${id}`, {
+      fetch(`http://localhost:8000/runners`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -31,7 +30,7 @@ const TeamDetail = props => {
 
   // const getMyRunners = (id) => {
   //   if (isAuthenticated()) {
-  //     fetch(`http://localhost:8000/runners`, {
+  //     fetch(`http://localhost:8000/runners?teams=teams`, {
   //       method: "GET",
   //       headers: {
   //         Accept: "application/json",
@@ -45,16 +44,16 @@ const TeamDetail = props => {
   // };
 
   useEffect(() => {
-    getTeam(props.match.params.teamId)
-  }, [props.match.params.teamId]);
-
+    getTeam()
+  }, []);
+console.log(roster)
   return (
     <>
-      {roster.runnerteam.map(runner => {
+      {roster.map(runner => {
 
+    if (runner.team.team_name = 'Varsity') {
         return (
-
-            <div key={runner.id} runner={runner} >
+            <div >
               <Link to={`/runners/${runner.id}`}>
                 <p>
                   <strong>
@@ -65,6 +64,11 @@ const TeamDetail = props => {
             </div>
 
         );
+    }else {
+        return (
+            <div>You have no runners on this team</div>
+        )
+    }
       })}
     </>
   );
