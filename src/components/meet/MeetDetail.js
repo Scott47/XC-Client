@@ -43,7 +43,7 @@ const MeetDetails = props => {
           </a>
 
           <p>
-            <strong>Date:</strong> {oneMeet.date}
+            <strong>Date:</strong> `{oneMeet.date}`
           </p>
           <p>
             <strong>Course</strong> {oneMeet.course}
