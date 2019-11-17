@@ -30,7 +30,7 @@ const TeamDetail = props => {
 
   // const getMyRunners = (id) => {
   //   if (isAuthenticated()) {
-  //     fetch(`http://localhost:8000/runners`, {
+  //     fetch(`http://localhost:8000/runners?teams=teams`, {
   //       method: "GET",
   //       headers: {
   //         Accept: "application/json",
@@ -50,9 +50,10 @@ console.log(roster)
   return (
     <>
       {roster.map(runner => {
-    if (runner.team.id = 3) {
+
+    if (runner.team.team_name = 'Varsity') {
         return (
-            <div key={runner.id} runner={runner} >
+            <div >
               <Link to={`/runners/${runner.id}`}>
                 <p>
                   <strong>
