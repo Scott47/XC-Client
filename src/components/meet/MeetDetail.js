@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Button } from "reactstrap";
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
+
 const MeetDetails = props => {
   const [oneMeet, setOneMeet] = useState({});
   const { isAuthenticated } = useSimpleAuth();
+
 
   const getOneMeet = id => {
     return fetch(`http://localhost:8000/meets/${id}`, {
@@ -35,16 +37,19 @@ const MeetDetails = props => {
   }, [props.match.params.meetId]);
 
   return (
+
     <>
       {oneMeet.name !== null ? (
+
+
         <section className="meet-details">
           <a href={`${oneMeet.url}`}>
             <h3>{oneMeet.name}</h3>
           </a>
 
-          <p>
-            <strong>Date:</strong> `{oneMeet.date}`
-          </p>
+          <div>
+            <strong>Date:</strong> {oneMeet.date}
+          </div>
           <p>
             <strong>Course</strong> {oneMeet.course}
           </p>
@@ -59,6 +64,7 @@ const MeetDetails = props => {
           </p>
           <Button onClick={deleteMeet}>Delete</Button>
         </section>
+
       ) : (
         <div></div>
       )}
