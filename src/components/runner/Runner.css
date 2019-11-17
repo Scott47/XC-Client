@@ -14,4 +14,8 @@
 .runner {
     flex-basis: 24%;
 }
+form {
+    display: flex;
+    justify-content: center;
+}
 

@@ -54,7 +54,7 @@ const createRunner = newRunner => {
 return (
     <>
 {
-        <form className="form--login" onSubmit={addToRunners}>
+        <form className="d-flex justify-content-center mb-4" onSubmit={addToRunners}>
           <div >
             <div >
           <h1 >New Runner Form</h1>
