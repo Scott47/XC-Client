@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button } from 'reactstrap'
+import { Button } from "reactstrap";
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 const MeetDetails = props => {
   const [oneMeet, setOneMeet] = useState({});
   const { isAuthenticated } = useSimpleAuth();
 
-  const getOneMeet= id => {
+  const getOneMeet = id => {
     return fetch(`http://localhost:8000/meets/${id}`, {
       method: "GET",
       headers: {
@@ -26,11 +26,9 @@ const MeetDetails = props => {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`
         }
-      })
-        .then(props.history.push("/meets"));
+      }).then(props.history.push("/meets"));
     }
   };
-
 
   useEffect(() => {
     getOneMeet(props.match.params.meetId);
@@ -40,9 +38,10 @@ const MeetDetails = props => {
     <>
       {oneMeet.name !== null ? (
         <section className="meet-details">
-          <h3>
-            {oneMeet.name}
-          </h3>
+          <a href={`${oneMeet.url}`}>
+            <h3>{oneMeet.name}</h3>
+          </a>
+
           <p>
             <strong>Date:</strong> {oneMeet.date}
           </p>
@@ -51,11 +50,6 @@ const MeetDetails = props => {
           </p>
           <p>
             <strong>Address:</strong> {oneMeet.address}
-          </p>
-          <p><strong>Link:  </strong>
-          <a href={`${oneMeet.url}`} >
-             {oneMeet.url}
-          </a>
           </p>
           <p>
             <strong>Distance:</strong> {oneMeet.distance}
