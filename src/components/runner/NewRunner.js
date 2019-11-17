@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Button } from 'reactstrap'
 
 // Author - Scott Silver
 // Purpose - Coach can add runner to roster
@@ -169,7 +170,7 @@ return (
           <br></br>
 
           </div>
-          <button onClick={e => addToRunners(e)}>Add Runner</button>
+          <Button onClick={e => addToRunners(e)}>Add Runner</Button>
           </div>
           </form>
 }
