@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import singleRunner from "../runner/RunnerDetail"
+import singleRunner from "../runner/RunnerDetail";
 
 //Author: Scott Silver
 //Purpose: Display roster of teams
@@ -13,7 +13,7 @@ const TeamDetail = props => {
 
   const getTeam = id => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/runners`, {
+      fetch(`http://localhost:8000/runners?team=${props.match.params.teamId}`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -28,32 +28,17 @@ const TeamDetail = props => {
     }
   };
 
-  // const getMyRunners = (id) => {
-  //   if (isAuthenticated()) {
-  //     fetch(`http://localhost:8000/runners?teams=teams`, {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: `Token ${localStorage.getItem("token")}`
-  //       }
-  //     })
-  //       .then(response => response.json())
-  //       .then(setRunner);
-  //   }
-  // };
 
   useEffect(() => {
-    getTeam()
+    getTeam();
   }, []);
-console.log(roster)
+  console.log(roster);
   return (
     <>
       {roster.map(runner => {
-
-    if (runner.team.team_name = 'Varsity') {
-        return (
-            <div >
+        if ((runner.team.team_id = "1")) {
+          return (
+            <div>
               <Link to={`/runners/${runner.id}`}>
                 <p>
                   <strong>
@@ -62,13 +47,36 @@ console.log(roster)
                 </p>
               </Link>
             </div>
-
-        );
-    }else {
-        return (
-            <div>You have no runners on this team</div>
-        )
-    }
+          );
+        }
+        if ((runner.team.team_id = "2")) {
+          return (
+            <div>
+              <Link to={`/runners/${runner.id}`}>
+                <p>
+                  <strong>
+                    {runner.first_name} {runner.last_name}
+                  </strong>
+                </p>
+              </Link>
+            </div>
+          );
+        }
+        if ((runner.team.team_id = "3")) {
+          return (
+            <div>
+              <Link to={`/runners/${runner.id}`}>
+                <p>
+                  <strong>
+                    {runner.first_name} {runner.last_name}
+                  </strong>
+                </p>
+              </Link>
+            </div>
+          );
+        } else {
+          return <div>You have no runners on this team</div>;
+        }
       })}
     </>
   );
