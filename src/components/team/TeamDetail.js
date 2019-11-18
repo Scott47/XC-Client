@@ -29,21 +29,6 @@ const TeamDetail = props => {
     }
   };
 
-  // const getMyRunners = (id) => {
-  //   if (isAuthenticated()) {
-  //     fetch(`http://localhost:8000/runners`, {
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: `Token ${localStorage.getItem("token")}`
-  //       }
-  //     })
-  //       .then(response => response.json())
-  //       .then(setRunner);
-  //   }
-  // };
-
   useEffect(() => {
     getTeam(props.match.params.teamId)
   }, [props.match.params.teamId]);

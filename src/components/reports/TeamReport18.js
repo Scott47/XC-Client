@@ -29,7 +29,7 @@ const RunnerReport = props => {
 
 
 useEffect(getReports, []);
-// console.log(reports.name)
+
 return (
     <>
         {reports.length > 0 ?
