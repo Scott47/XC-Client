@@ -14,7 +14,7 @@ const RunnerReport = props => {
 
   const getReports = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/reports?meet_year=2017`, {
+      fetch(`http://localhost:8000/runnermeets?meet_year=2017`, {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -29,7 +29,7 @@ const RunnerReport = props => {
 
 
 useEffect(getReports, []);
-// console.log(reports.name)
+
 return (
     <>
         {reports.length > 0 ?
