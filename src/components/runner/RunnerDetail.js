@@ -81,7 +81,6 @@ const RunnerDetails = props => {
           </p>
           {singleRunner.runnermeet.length > 0
             ? singleRunner.runnermeet.map(runnermeet => {
-              console.log(singleRunner.runnermeet)
                 return (
                   <>
                     <Link to={`/meets/${runnermeet.meet.id}`}>
