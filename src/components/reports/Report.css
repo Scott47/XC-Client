@@ -1,8 +1,11 @@
  .report {
     color: black;
+
+
 }
 .table-heading {
     display: flex-wrap;
     flex-direction: row;
     color: black;
+
 }

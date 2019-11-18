@@ -25,9 +25,9 @@ const RunnerDetails = props => {
   };
 
 
-  const deleteRunner = (id) => {
+  const deleteRunner = () => {
     if (isAuthenticated()) {
-      fetch(`http://localhost:8000/runners/${id}`, {
+      fetch(`http://localhost:8000/runners/${props.match.params.runnerId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`

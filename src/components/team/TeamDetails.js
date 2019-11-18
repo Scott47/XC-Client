@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import singleRunner from "../runner/RunnerDetail";
+
 
 //Author: Scott Silver
 //Purpose: Display roster of teams
@@ -28,15 +28,14 @@ const TeamDetail = props => {
     }
   };
 
-
   useEffect(() => {
     getTeam();
   }, []);
-  console.log(roster);
+
   return (
     <>
       {roster.map(runner => {
-        if ((runner.team.team_id = "1")) {
+        if ((runner.team.team_id = runner.team.team_name)) {
           return (
             <div>
               <Link to={`/runners/${runner.id}`}>
@@ -48,32 +47,7 @@ const TeamDetail = props => {
               </Link>
             </div>
           );
-        }
-        if ((runner.team.team_id = "2")) {
-          return (
-            <div>
-              <Link to={`/runners/${runner.id}`}>
-                <p>
-                  <strong>
-                    {runner.first_name} {runner.last_name}
-                  </strong>
-                </p>
-              </Link>
-            </div>
-          );
-        }
-        if ((runner.team.team_id = "3")) {
-          return (
-            <div>
-              <Link to={`/runners/${runner.id}`}>
-                <p>
-                  <strong>
-                    {runner.first_name} {runner.last_name}
-                  </strong>
-                </p>
-              </Link>
-            </div>
-          );
+
         } else {
           return <div>You have no runners on this team</div>;
         }

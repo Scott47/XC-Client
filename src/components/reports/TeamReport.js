@@ -26,7 +26,7 @@ const TeamReport = props => {
                     return (
                         <tr className='report'>
                         <td>{report.meet.name}</td>
-                        <td>{report.meet.date.slice(0, 10)}</td>
+                        <td>{report.meet.date.slice(5, 10)}</td>
                         <td>{report.meet.distance} mi</td>
                         <td>{report.team.team_name}</td>
                         <td>{report.total_time} mins</td>
