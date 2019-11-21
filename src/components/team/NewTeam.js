@@ -37,9 +37,6 @@ const NewTeam = props => {
     }).then(res => res.json());
   };
 
-  // useEffect(
-  //   props.getMyTeams,[]);
-
 
   return (
     <>
@@ -47,7 +44,7 @@ const NewTeam = props => {
         <form className="form--login" onSubmit={addToTeams}>
           <div>
             <div>
-              <h1>New Team</h1>
+              <h3>New Team</h3>
               <fieldset>
                 <label className="card-text" htmlFor="team_name">
                   {" "}
