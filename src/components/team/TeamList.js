@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useSimpleAuth from "../../ui/useSimpleAuth";
+import { Button } from "reactstrap"
 import Team from "./Team"
 
 //Author: Scott Silver
@@ -45,6 +46,7 @@ const TeamList = props => {
             You have no current runners
           </p>
         )}
+        <Button ><a href="/addteam">Add Team</a></Button>
       </div>
     </>
   );
