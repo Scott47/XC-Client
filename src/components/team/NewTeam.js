@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
+import getMyTeams from "./TeamList"
 
 // Author - Scott Silver
 // Purpose - Coach can add team
 // Methods - POST
 
-const AddTeam = props => {
+const NewTeam = props => {
   const team_name = useRef();
 
 
@@ -36,7 +37,9 @@ const AddTeam = props => {
     }).then(res => res.json());
   };
 
-  useEffect(props.getMyTeams, []);
+  // useEffect(
+  //   props.getMyTeams,[]);
+
 
   return (
     <>
@@ -46,7 +49,7 @@ const AddTeam = props => {
             <div>
               <h1>New Team</h1>
               <fieldset>
-                <label className="card-text" htmlFor="name">
+                <label className="card-text" htmlFor="team_name">
                   {" "}
                   Name{" "}
                 </label>
@@ -60,7 +63,6 @@ const AddTeam = props => {
                   autoFocus
                 />
               </fieldset>
-
             </div>
             <button onClick={e => addToTeams(e)}>Submit</button>
           </div>
@@ -70,4 +72,4 @@ const AddTeam = props => {
   );
 };
 
-export default AddTeam;
+export default NewTeam;

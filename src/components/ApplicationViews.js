@@ -11,7 +11,7 @@ import RunnerDetails from "./runner/RunnerDetail";
 import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
 import TeamDetails from "./team/TeamDetails";
-import AddTeam from "./team/NewTeam"
+import NewTeam from "./team/NewTeam"
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
@@ -89,7 +89,7 @@ const ApplicationViews = () => {
         exact
         path="/addteam"
         render={props => {
-          return <AddTeam {...props} />;
+          return <NewTeam {...props} />;
         }}
       />
       <Route
