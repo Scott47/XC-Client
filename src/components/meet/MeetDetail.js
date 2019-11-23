@@ -40,8 +40,6 @@ const MeetDetails = props => {
 
     <>
       {oneMeet.name !== null ? (
-
-
         <section className="meet-details">
           <a href={`${oneMeet.url}`}>
             <h3>{oneMeet.name}</h3>
