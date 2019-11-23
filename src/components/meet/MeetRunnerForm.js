@@ -11,6 +11,8 @@ const MeetRunnerForm = props => {
   const [runners, setRunners] = useState([]);
   const runner = useRef();
   const meet = useRef();
+  const meet_time = useRef();
+  const place = useRef();
   const { isAuthenticated } = useSimpleAuth();
 
   const getMeets = () => {
@@ -38,11 +40,13 @@ const MeetRunnerForm = props => {
       },
       body: JSON.stringify({
         runner_id: runner.current.value,
-        meet_id: meet.current.value
+        meet_id: meet.current.value,
+        meet_time: +meet_time.current.value,
+        place: +place.current.value
       })
     })
       .then(response => response.json())
-      .then(setRunners)
+      .then(setRunners);
   };
 
   const getRunners = () => {
@@ -73,7 +77,7 @@ const MeetRunnerForm = props => {
         })}
       </select>
 
-      <select ref={runner} name="runner_id">
+      <select value={props.match.params.runnerId} ref={runner} name="runner_id">
         {runners.map(runner => {
           return (
             <option value={runner.id}>
@@ -82,8 +86,21 @@ const MeetRunnerForm = props => {
           );
         })}
       </select>
+      <fieldset>
+        <input ref={meet_time} type="text" placeholder="MeetTime" />
+      </fieldset>
+      <fieldset>
+        <input ref={place} type="text" placeholder="Place" />
+      </fieldset>
 
-      <Button onClick={()=>{saveRunnerMeetAssignment();props.history.push("/runners")}} >Save</Button>
+      <Button
+        onClick={() => {
+          saveRunnerMeetAssignment();
+          props.history.push("/runners");
+        }}
+      >
+        Save
+      </Button>
     </>
   );
 };

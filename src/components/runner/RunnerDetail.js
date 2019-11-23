@@ -71,21 +71,22 @@ const RunnerDetails = props => {
                 <a href={`/editrunner/${singleRunner.id}`}>Edit Info</a>
               </Button>
           </p>
-          <Link className="nav-link" to={`/teams/${singleRunner.team.id}`}>
+
             <p>
-              <strong>Team:</strong> {singleRunner.team.team_name}
+              <strong>Team:</strong><Link className="nav-link" to={`/teams/${singleRunner.team.id}`}>&emsp;&emsp;&emsp;&emsp;{singleRunner.team.team_name}
+              </Link>
+
             </p>
-          </Link>
+
           <p>
             <strong>Meets:</strong>
           </p>
           {singleRunner.runnermeet.length > 0
             ? singleRunner.runnermeet.map(runnermeet => {
-              console.log(singleRunner.runnermeet)
                 return (
                   <>
                     <Link to={`/meets/${runnermeet.meet.id}`}>
-                      <p>{runnermeet.meet.name}</p>
+                      <p>&emsp;&emsp;&emsp;&emsp;&emsp;{runnermeet.meet.name}</p>
                     </Link>
                   </>
                 );

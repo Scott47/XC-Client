@@ -11,6 +11,7 @@ import RunnerDetails from "./runner/RunnerDetail";
 import EditRunner from "./runner/EditRunner";
 import TeamList from "./team/TeamList";
 import TeamDetails from "./team/TeamDetails";
+import NewTeam from "./team/NewTeam"
 import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
@@ -82,6 +83,13 @@ const ApplicationViews = () => {
         render={props => {
           if (isAuthenticated()) return <TeamList {...props} />;
           else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/addteam"
+        render={props => {
+          return <NewTeam {...props} />;
         }}
       />
       <Route

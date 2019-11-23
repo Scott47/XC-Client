@@ -4,7 +4,7 @@ import useSimpleAuth from "../../ui/useSimpleAuth";
 
 
 const MeetDetails = props => {
-  const [oneMeet, setOneMeet] = useState({});
+  const [oneMeet, setOneMeet] = useState({date:""});
   const { isAuthenticated } = useSimpleAuth();
 
 
@@ -40,15 +40,13 @@ const MeetDetails = props => {
 
     <>
       {oneMeet.name !== null ? (
-
-
         <section className="meet-details">
           <a href={`${oneMeet.url}`}>
             <h3>{oneMeet.name}</h3>
           </a>
 
           <div>
-            <strong>Date:</strong> {oneMeet.date}
+            <strong>Date:</strong> {oneMeet.date.slice(0,10)}
           </div>
           <p>
             <strong>Course</strong> {oneMeet.course}
