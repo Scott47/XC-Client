@@ -16,6 +16,7 @@ import MeetList from "./meet/MeetList";
 import MeetDetails from "./meet/MeetDetail";
 import AddMeet from "./meet/AddMeet"
 import MeetRunnerForm from "./meet/MeetRunnerForm"
+import EditRunnerMeet from "./meet/EditRunnerMeet"
 import ReportLinks from "./reports/ReportLinks"
 import RunnerReport from "./reports/RunnerReport"
 import RunnerReport18 from "./reports/RunnerReport18"
@@ -151,6 +152,14 @@ const ApplicationViews = () => {
         path="/assigntomeet/:runnerId(\d+)"
         render={props => {
           if (isAuthenticated()) return <MeetRunnerForm runner={runner} {...props} />;
+          else return <Redirect to="/login" />;
+        }}
+      />
+      <Route
+        exact
+        path="/assigntomeet/:runnerId(\d+)"
+        render={props => {
+          if (isAuthenticated()) return <EditRunnerMeet runner={runner} {...props} />;
           else return <Redirect to="/login" />;
         }}
       />
