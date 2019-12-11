@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import getMyTeams from "./TeamList"
+import React, { useRef } from "react";
+
 
 // Author - Scott Silver
 // Purpose - Coach can add team

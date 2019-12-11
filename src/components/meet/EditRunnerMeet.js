@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-
 const EditRunnerMeet = props => {
   const [meetInfo, setMeetInfo] = useState({});
   const [runnerMeets, setRunnerMeets] = useState([]);
@@ -20,7 +19,7 @@ const EditRunnerMeet = props => {
       .then(setMeetInfo);
   };
 
-  const getRunnerMeets = (id) => {
+  const getRunnerMeets = id => {
     fetch(`http://localhost:8000/runnermeets/${id}`, {
       method: "GET",
       headers: {
@@ -43,7 +42,7 @@ const EditRunnerMeet = props => {
       },
       body: JSON.stringify({
         meet_time: meet_time.current.value,
-        place: place .current.value
+        place: place.current.value
       })
     }).then(() => {
       props.history.push(`/assigntomeet/${props.match.params.runnerId}`);
@@ -54,7 +53,7 @@ const EditRunnerMeet = props => {
     getRunnerMeets(props.match.params.runnermeetId);
     getMeets();
   }, [props.match.params.runnerId]);
-    console.log(meetInfo, "meetinfo")
+  console.log(meetInfo, "meetinfo");
   return (
     <>
       {meetInfo.id ? (
@@ -83,8 +82,6 @@ const EditRunnerMeet = props => {
                 required
               ></input>
             </li>
-
-
             <br />
             <button onClick={() => updateRunnerMeetInfo(meetInfo, meetInfo.id)}>
               Update Runner Information
