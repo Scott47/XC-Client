@@ -9,6 +9,7 @@ import { Button } from "reactstrap";
 const MeetRunnerForm = props => {
   const [meets, setMeets] = useState([]);
   const [runners, setRunners] = useState([]);
+  const [ selectedRunner, setSelectedRunner ] = useState(props.match.params.runnerId)
   const runner = useRef();
   const meet = useRef();
   const meet_time = useRef();
@@ -64,11 +65,17 @@ const MeetRunnerForm = props => {
     }
   };
 
+  function handleChange(event) {
+    setSelectedRunner(event.target.value)
+    console.log(selectedRunner)
+  }
+
   useEffect(() => {
     getMeets();
     getRunners();
   }, []);
 
+// console.log(runners, 'ok1', meets, 'ok2', selectedRunner, 'ok3')
   return (
     <>
       <select ref={meet} name="meet_id">
@@ -77,7 +84,7 @@ const MeetRunnerForm = props => {
         })}
       </select>
 
-      <select value={props.match.params.runnerId} ref={runner} name="runner_id">
+      <select value={selectedRunner} onChange={handleChange} ref={runner} name="runner_id">
         {runners.map(runner => {
           return (
             <option value={runner.id}>
@@ -87,10 +94,10 @@ const MeetRunnerForm = props => {
         })}
       </select>
       <fieldset>
-        <input ref={meet_time} type="text" placeholder="MeetTime" />
+        <input ref={meet_time} defaultValue={meet_time} type="text" placeholder="MeetTime" />
       </fieldset>
       <fieldset>
-        <input ref={place} type="text" placeholder="Place" />
+        <input ref={place} defaultValue={place} type="text" placeholder="Place" />
       </fieldset>
 
       <Button

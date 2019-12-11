@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import getMyTeams from "./TeamList"
+import React, { useRef } from "react";
+
 
 // Author - Scott Silver
 // Purpose - Coach can add team
@@ -7,6 +7,7 @@ import getMyTeams from "./TeamList"
 
 const NewTeam = props => {
   const team_name = useRef();
+  const coach_id = useRef()
 
 
   // function that adds a team to the teams list on the teams page
@@ -16,8 +17,9 @@ const NewTeam = props => {
     // object that grabs all the values for new team
     const newTeam = {
       team_name: team_name.current.value,
-
+      coach_id: localStorage.getItem("user_id")
     };
+
     createTeam(newTeam).then(() => {
       props.history.push({
         pathname: "/teams"
