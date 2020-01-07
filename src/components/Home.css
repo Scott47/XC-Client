@@ -3,10 +3,15 @@
 }
 
 .Home-logo {
+  background-image: url("xclogo.jpg");
+  background-repeat: no-repeat;
+  display: flex-wrap;
   height: 40vmin;
 }
 
 .Home-header {
+  background-image: url("XCjpg.jpg");
+  object-fit: cover;
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,4 +24,9 @@
 
 .Home-link {
   color: #09d3ac;
+}
+
+.Home-text {
+  color: whitesmoke;
+  font-weight: 800;
 }
