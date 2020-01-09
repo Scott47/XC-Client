@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const EditRunnerMeet = props => {
-  const [meetInfo, setMeetInfo] = useState({});
+  const [meetInfo, setMeetInfo] = useState([]);
   const [runnerMeets, setRunnerMeets] = useState([]);
   const meet_time = useRef();
   const place = useRef();

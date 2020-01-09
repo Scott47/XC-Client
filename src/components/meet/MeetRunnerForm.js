@@ -94,10 +94,10 @@ const MeetRunnerForm = props => {
         })}
       </select>
       <fieldset>
-        <input ref={meet_time} defaultValue={meet_time} type="text" placeholder="MeetTime" />
+        <input ref={meet_time} placeholder="meet time" />
       </fieldset>
       <fieldset>
-        <input ref={place} defaultValue={place} type="text" placeholder="Place" />
+        <input ref={place} placeholder="place" />
       </fieldset>
 
       <Button
