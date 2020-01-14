@@ -1,5 +1,11 @@
+ .report-head {
+     color: black;
+     text-align: center;
+ }
+
  .report {
     color: black;
+    /* color: gainsboro; */
 
 
 }
