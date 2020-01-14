@@ -1,10 +1,18 @@
 .card-body {
     background-color: rgb(100, 94, 94)
 }
+.card-runner {
+    color: rgb(6, 21, 190);
+}
+.card-text {
+    color: rgb(8, 9, 20);
+}
 .card-edit {
     color: black;
 }
-
+.add-runner {
+    text-align: center;
+}
 .myRunners-Div {
     display: flex;
     flex-wrap: wrap;
