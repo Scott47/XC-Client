@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from 'reactstrap'
+import { Table, Container } from 'reactstrap'
 import './Report.css'
 
 
@@ -7,9 +7,11 @@ import './Report.css'
 const Report = props => {
   return (
     <>
-        <Table className='report'>
+    <Container>
+
+        <Table dark-light size="sm" hover bordered className='report'>
             <thead>
-            <tr className='report'>
+            <tr className='report-head'>
                 <th>Runner</th>
                 <th>Meet</th>
                 <th>Date</th>
@@ -40,6 +42,7 @@ const Report = props => {
             }
             </tbody>
         </Table>
+        </Container>
 
     </>
   );
