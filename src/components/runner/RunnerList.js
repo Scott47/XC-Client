@@ -26,9 +26,9 @@ const RunnerList = props => {
   };
   useEffect(getMyRunners, []);
   return (
-    <>
-      <div>
-        Add a runner to roster <a href="/addrunner"> here</a>.
+    <>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      <div className="add-runner">
+        Add a runner to roster <strong><a href="/addrunner"> here</a></strong>.
       </div>
       <div className="myRunners-Div">
         {myRunners.length > 0 ? (

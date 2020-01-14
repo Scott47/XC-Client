@@ -12,7 +12,7 @@
 .Home-header {
   background-image: url("XCjpg.jpg");
   object-fit: cover;
-  background-color: #282c34;
+  background-color: #d4d7db;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
