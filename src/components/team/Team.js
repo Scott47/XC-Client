@@ -22,17 +22,20 @@ const Team = props => {
         <Row>
           <Col>
             <Card>
-              <CardBody className="text-center card-body">
+              <CardBody className="text-left card-body">
                 <CardHeader className="card-team">
                   <Link className="card-team" to={`/teams/${props.team.id}`}>
                     <CardLink>
                       <strong>{props.team.team_name}</strong>
                     </CardLink>
                   </Link>
+                  <CardText text-size="sm" className="text-muted text-right">
+                  Number of Runners: <Link className="card-team" to={`/teams/${props.team.id}`}>{props.team.runnerteam.length}</Link>
+                  </CardText>
                 </CardHeader>
-                <CardFooter text-size="sm" className="text-muted">
-                  {props.team.runnerteam.length} runners
-                </CardFooter>
+                {/* <CardFooter text-size="sm" className="text-muted text-right">
+                  Number of Runners: <Link className="card-team" to={`/teams/${props.team.id}`}>{props.team.runnerteam.length}</Link>
+                </CardFooter> */}
               </CardBody>
             </Card>
           </Col>

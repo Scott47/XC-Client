@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Container, Button } from 'reactstrap'
 
 
 // Author - Scott Silver
@@ -42,15 +43,14 @@ const NewTeam = props => {
 
   return (
     <>
+    <Container>
       {
         <form className="form--login" onSubmit={addToTeams}>
           <div>
-            <div>
-              <h3>New Team</h3>
               <fieldset>
                 <label className="card-text" htmlFor="team_name">
                   {" "}
-                  Name{" "}
+                  Type new team name{" "}
                 </label>
                 <input
                   ref={team_name}
@@ -62,11 +62,12 @@ const NewTeam = props => {
                   autoFocus
                 />
               </fieldset>
-            </div>
-            <button onClick={e => addToTeams(e)}>Submit</button>
-          </div>
+            </div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <div></div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <Button onClick={e => addToTeams(e)}>Submit</Button>
         </form>
       }
+      </Container>
     </>
   );
 };
