@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from 'reactstrap'
+import { Container, Button, Col, Row} from 'reactstrap'
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 const RunnerDetails = props => {
@@ -46,41 +46,57 @@ const RunnerDetails = props => {
   return (
     <>
       {singleRunner.first_name !== null ? (
-        <section className="runner-details">
+        <Container size="sm" className="runner-details">
+          <Row xs='2'>
+          <Col >
           <h3>
             {singleRunner.first_name} {singleRunner.last_name}
           </h3>
-          <p>
+          </Col>
+          </Row>
+          <Row>
+          <Col>
             <strong>Grade:</strong> {singleRunner.grade}
-          </p>
-          <p>
+          </Col>
+          </Row>
+          <Row>
+          <Col>
             <strong>Phone:</strong> {singleRunner.phone}
-          </p>
-          <p>
+          </Col>
+          </Row>
+          <Row>
+          <Col>
             <strong>Email:</strong> {singleRunner.email}
-          </p>
-          <p>
+          </Col>
+          </Row>
+          <Row>
+          <Col>
             <strong>Address:</strong> {singleRunner.address}
-          </p>
-          <p>
+          </Col>
+          </Row>
+          <Row>
+          <Col>
             <strong>Parent:</strong> {singleRunner.parent}
-            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
               <Button onClick={() => {
                     props.history.push(`/editrunner/${singleRunner.id}`);
                   }} className="edit-button">
                 <a href={`/editrunner/${singleRunner.id}`}>Edit Info</a>
               </Button>
-          </p>
-
-            <p>
+          </Col>
+          </Row>
+<Row>
+            <Col>
               <strong>Team:</strong><Link className="nav-link" to={`/teams/${singleRunner.team.id}`}>&emsp;&emsp;&emsp;&emsp;{singleRunner.team.team_name}
               </Link>
 
-            </p>
-
-          <p>
+            </Col>
+            </Row>
+            <Row>
+          <Col>
             <strong>Meets:</strong>
-          </p>
+          </Col>
+          </Row>
           {singleRunner.runnermeet.length > 0
             ? singleRunner.runnermeet.map(runnermeet => {
                 return (
@@ -101,7 +117,8 @@ const RunnerDetails = props => {
           <Button onClick={deleteRunner}>Remove Runner</Button>
           {/* <Button onClick={()=>{deleteRunner()}}>Remove Runner</Button> */}
           <br></br>
-        </section>
+
+        </Container>
       ) : (
         <div></div>
       )}

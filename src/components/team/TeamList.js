@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import { Button } from "reactstrap"
+import { Container, Button, Row } from "reactstrap"
 import Team from "./Team"
+import "./Team.css"
 
 //Author: Scott Silver
 //Purpose: Display Teams associated with coach/user
@@ -30,6 +32,7 @@ const TeamList = props => {
 
   return (
     <>
+    <Container>
       <div className="MyTeams-Div">
         {MyTeams.length > 0 ? (
           MyTeams.map(team => {
@@ -46,8 +49,9 @@ const TeamList = props => {
             You have no current runners
           </p>
         )}
-        <Button ><a href="/addteam">Add Team</a></Button>
+       <Row> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<Button ><p>Add a new team<Link className="card-team" to="/addteam"> here.</Link></p></Button></Row>
       </div>
+      </Container>
     </>
   );
 };

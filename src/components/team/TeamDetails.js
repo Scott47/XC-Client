@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Container } from "reactstrap"
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 
@@ -32,12 +33,17 @@ const TeamDetail = props => {
     getTeam();
   }, []);
 
+console.log(roster)
   return (
+
     <>
+
       {roster.map(runner => {
+        console.log(runner)
         if ((runner.team.team_id = runner.team.team_name)) {
           return (
-            <div>
+            <Container>
+              &emsp;&emsp;&emsp;&emsp;
               <Link to={`/runners/${runner.id}`}>
                 <p>
                   <strong>
@@ -45,7 +51,8 @@ const TeamDetail = props => {
                   </strong>
                 </p>
               </Link>
-            </div>
+              {runner.team.team_name}
+            </Container>
           );
 
         } else {

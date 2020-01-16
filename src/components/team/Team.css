@@ -1,0 +1,36 @@
+.card-body {
+    background-color: rgb(165, 163, 163)
+
+}
+.card-team {
+    color: rgb(4, 54, 121);
+
+}
+
+.myTeams-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    white-space: normal;
+}
+
+.team {
+    flex-basis: 24%;
+}
+
+/* .card-text {
+    color: rgb(8, 9, 20);
+}
+.card-edit {
+    color: black;
+}
+.add-runner {
+    text-align: center;
+}
+
+.runner {
+    flex-basis: 24%;
+}
+form {
+    display: flex;
+    justify-content: center; */
