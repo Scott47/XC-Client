@@ -32,7 +32,6 @@ const TeamList = props => {
 
   return (
     <>
-    <Container>
       <div className="MyTeams-Div">
         {MyTeams.length > 0 ? (
           MyTeams.map(team => {
@@ -51,7 +50,6 @@ const TeamList = props => {
         )}
        <Row> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;<Button ><p>Add a new team<Link className="card-team" to="/addteam"> here.</Link></p></Button></Row>
       </div>
-      </Container>
     </>
   );
 };
