@@ -8,11 +8,11 @@ const NavBar = props => {
     const { isAuthenticated, logout } = useSimpleAuth()
 
     return (
-        <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow navbar1">
+        <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow navbar1 navi">
             <ul className="nav nav-pills nav-fill">
             <img class="logo" src={xclogo} height="50px" width="50px" alt="XC COACH"/>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/">Home</Link>
+                <li className="nav-item" id="navilick">
+                    <Link className="nav-link"  to="/">Home</Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/runners">Runners</Link>

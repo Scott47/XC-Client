@@ -8,7 +8,6 @@ const Report = props => {
   return (
     <>
     <Container>
-
         <Table dark-light size="sm" hover bordered className='report'>
             <thead>
             <tr className='report-head'>
@@ -23,9 +22,7 @@ const Report = props => {
             </tr>
             </thead>
             <tbody>
-            {
-                props.reports.map(report => {
-
+            {props.reports.map(report => {
                     return (
                         <tr className='report'>
                         <td>{report.runner.last_name}, {report.runner.first_name}</td>
