@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap"
 import useSimpleAuth from "../../ui/useSimpleAuth";
+import "./Team.css"
 
 
 //Author: Scott Silver
@@ -43,6 +44,7 @@ console.log(roster)
         if ((runner.team.team_id = runner.team.team_name)) {
           return (
             <Container>
+              <h5>{runner.team.team_name} team</h5>
               &emsp;&emsp;&emsp;&emsp;
               <Link to={`/runners/${runner.id}`}>
                 <p>
@@ -51,7 +53,7 @@ console.log(roster)
                   </strong>
                 </p>
               </Link>
-              {runner.team.team_name}
+
             </Container>
           );
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Runner from "./Runner";
+import "../Home.css"
 import useSimpleAuth from "../../ui/useSimpleAuth";
 
 //Author: Scott Silver
@@ -28,7 +29,7 @@ const RunnerList = props => {
   return (
     <>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
       <div className="add-runner">
-        Add a runner to roster <strong><a href="/addrunner"> here</a></strong>.
+        Add a runner to roster<a href="/addrunner"> here</a>.
       </div>
       <div className="myRunners-Div">
         {myRunners.length > 0 ? (

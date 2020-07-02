@@ -17,6 +17,9 @@
 .team {
     flex-basis: 24%;
 }
+h5 {
+    text-decoration: underline;
+}
 
 /* .card-text {
     color: rgb(8, 9, 20);

@@ -11,7 +11,10 @@
     color: black;
 }
 .add-runner {
-    text-align: center;
+
+    text-align: left;
+    padding-left: 2%;
+    justify-content: left;
 }
 .myRunners-Div {
     display: flex;
