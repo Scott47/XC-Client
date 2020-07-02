@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import useSimpleAuth from "../../ui/useSimpleAuth";
-import { Container, Button, Row } from "reactstrap"
+import { Button, Row } from "reactstrap"
 import Team from "./Team"
 import "./Team.css"
 

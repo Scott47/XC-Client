@@ -8,7 +8,7 @@ import { Container, Button } from 'reactstrap'
 
 const NewTeam = props => {
   const team_name = useRef();
-  const coach_id = useRef()
+  // const coach_id = useRef()
 
 
   // function that adds a team to the teams list on the teams page

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Card, Button, CardTitle, CardText, Row, Col } from "reactstrap";
+import { Card, Button, CardTitle, CardText, Row } from "reactstrap";
 import "./Runner.css";
 
 const Runner = props => {

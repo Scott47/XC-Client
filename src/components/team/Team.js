@@ -3,11 +3,8 @@ import {
   Container,
   Card,
   CardLink,
-  Button,
-  CardFooter,
   CardHeader,
   CardBody,
-  CardTitle,
   CardText,
   Row,
   Col

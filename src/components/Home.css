@@ -10,8 +10,10 @@
 }
 
 .Home-header {
-  background-image: url("XCjpg.jpg");
-  object-fit: cover;
+  background-image: url("nike sneakers.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
   background-color: #d4d7db;
   min-height: 100vh;
   display: flex;

@@ -1,5 +1,4 @@
 import React from "react";
-import XCjpg from "./XCjpg.jpg";
 import xclogo from "./xclogo.jpg";
 import "./Home.css";
 
